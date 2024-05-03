@@ -1,4 +1,13 @@
 /* .product-colors{
     display: flex;
     gap:1em;
+<<<<<<< HEAD
 } */
+=======
+}
+.container{
+    width: 90%;
+    margin-inline: auto;
+
+}
+>>>>>>> 2a06956d40139d28e51a73a2bb0f44f76fca45c0
