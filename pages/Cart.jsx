@@ -1,9 +1,9 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 
 export default function Cart() {
   const { cartProducts, setCartProducts } = useOutletContext();
-  console.log(cartProducts);
+  const navigate = useNavigate();
   function deleteProduct(product) {
     const newSavedCartProducts = cartProducts.filter(
       (savedCartProduct) =>
@@ -23,7 +23,7 @@ export default function Cart() {
     );
   }
   return (
-    <section className="cart">
+    <section className="cart container">
       <h1 className="cart-title">Your Cart</h1>
       {cartProducts?.map((savedCartProduct) => {
         return (
@@ -60,7 +60,14 @@ export default function Cart() {
               <p>Total price:</p>
               <p>{cartProducts.reduce((a, b) => a + b.price, 0)}</p>
             </div>
-            <button className="cart-checkout">Checkout</button>
+            <button
+              className="cart-checkout"
+              onClick={() => {
+                navigate("/payment");
+              }}
+            >
+              Checkout
+            </button>
           </div>
         );
       })}

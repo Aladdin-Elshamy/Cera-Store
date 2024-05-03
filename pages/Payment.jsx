@@ -1,4 +1,5 @@
 import { useOutletContext } from "react-router-dom";
+import PersonalInfoForm from "../components/PersonalInfoForm";
 import React from "react";
 export default function Payment() {
   const { cartProducts } = useOutletContext();
@@ -6,37 +7,47 @@ export default function Payment() {
   function handleChange(event) {
     setPaymentMethod(event.target.value);
   }
+  function displayPayment() {
+    setPaymentMethod(null);
+  }
   return (
-    <section className="payment">
-      <div className="payment-method">
-        <h1 className="payment-method-title">Payment Method</h1>
-        <p className="payment-method-text">Please select a payment method</p>
-        <div className="payment-method-options">
-          <div className="payment-method-option">
-            <input
-              type="radio"
-              name="payment-method"
-              id="cash-on-delivery"
-              value="cash-on-delivery"
-              onChange={handleChange}
-            />
-            <label htmlFor="cash-on-delivery">Cash on delivery</label>
+    <section className="payment container">
+      {paymentMethod ? (
+        <PersonalInfoForm
+          displayPayment={displayPayment}
+          paymentMethod={paymentMethod}
+        />
+      ) : (
+        <div className="payment-method">
+          <h1 className="payment-method-title">Payment Method</h1>
+          <p className="payment-method-text">Please select a payment method</p>
+          <div className="payment-method-options">
+            <div className="payment-method-option">
+              <input
+                type="radio"
+                name="payment-method"
+                id="cash-on-delivery"
+                value="cash-on-delivery"
+                onChange={handleChange}
+              />
+              <label htmlFor="cash-on-delivery">Cash on delivery</label>
+            </div>
+            <div className="payment-method-option">
+              <input
+                type="radio"
+                name="payment-method"
+                id="vf-cash"
+                value="vf-cash"
+                onChange={handleChange}
+              />
+              <label htmlFor="debit-card">VF Cash</label>
+            </div>
           </div>
-          <div className="payment-method-option">
-            <input
-              type="radio"
-              name="payment-method"
-              id="vf-cash"
-              value="vf-cash"
-              onChange={handleChange}
-            />
-            <label htmlFor="debit-card">VF Cash</label>
-          </div>
+          <button className="payment-method-submit" disabled={!paymentMethod}>
+            Next
+          </button>
         </div>
-        <button className="payment-method-submit" disabled={!paymentMethod}>
-          Payment
-        </button>
-      </div>
+      )}
       <div className="order-summary">
         <h1 className="order-summary-title">Order Summary</h1>
         {cartProducts.map((product) => (

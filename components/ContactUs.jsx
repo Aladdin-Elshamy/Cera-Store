@@ -16,7 +16,7 @@ export default function ContactUs() {
   }
 
   return (
-    <section className="contact-us" id="contact">
+    <section className="contact-us" id="contact-us">
       <div className="contact-us-form">
         <h2 className="contact-us-title">Contact Us</h2>
         <form action="" onSubmit={handleSubmit(onSubmit)}>

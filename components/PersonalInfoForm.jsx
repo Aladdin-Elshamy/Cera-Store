@@ -1,20 +1,35 @@
 import { useForm } from "react-hook-form";
-const {
-  register,
-  handleSubmit,
-  formState: { errors },
-} = useForm();
-export default function PersonalInfoForm() {
+import { useNavigate, useOutletContext } from "react-router-dom";
+export default function PersonalInfoForm(props) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
+  const { setCartProducts } = useOutletContext();
+
+  function clearCart() {
+    setCartProducts([]);
+    localStorage.removeItem("cartProducts");
+  }
+  function onSubmit(data) {
+    clearCart();
+    navigate("/success", { replace: true });
+  }
   return (
     <div className="personal-info">
       <h1 className="personal-info-title">Personal Information</h1>
-      <form action="">
+      {props.paymentMethod === "vf-cash" ? (
+        <h2>Vodafone Cash:01009876654</h2>
+      ) : null}
+      <form action="" onSubmit={handleSubmit(onSubmit)}>
         <div className="input-field">
           <label htmlFor="name">Name</label>
           <input
             type="text"
             {...register("name", { required: true, maxLength: 20 })}
-            placeholder="Name"
+            placeholder="Enter Your Name"
           />
           {errors.name?.type === "required" ? (
             <span>This field is required</span>
@@ -30,18 +45,9 @@ export default function PersonalInfoForm() {
               required: true,
               pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
             })}
-            placeholder="Email"
+            placeholder="Enter Your Email"
           />
-        </div>
-        <div className="input-field">
-          <label htmlFor="phoneNumber">Phone Number</label>
-          <input
-            id="phoneNumber"
-            type="number"
-            {...register("phoneNumber", { required: true })}
-            placeholder="Phone Number"
-          />
-          {errors.phoneNumber && (
+          {errors.email && (
             <span className="error-message">This field is required</span>
           )}
         </div>
@@ -51,24 +57,40 @@ export default function PersonalInfoForm() {
             id="phoneNumber"
             type="number"
             {...register("phoneNumber", { required: true })}
-            placeholder="Phone Number"
+            placeholder="Enter Your Phone Number"
           />
           {errors.phoneNumber && (
             <span className="error-message">This field is required</span>
           )}
         </div>
         <div className="input-field">
-          <label htmlFor="phoneNumber">Phone Number</label>
+          <label htmlFor="countery">Countery</label>
           <input
-            id="phoneNumber"
-            type="number"
-            {...register("phoneNumber", { required: true })}
-            placeholder="Phone Number"
+            id="countery"
+            type="text"
+            {...register("countery", { required: true })}
+            placeholder="Enter Your Countery"
           />
-          {errors.phoneNumber && (
+          {errors.countery && (
             <span className="error-message">This field is required</span>
           )}
         </div>
+        <div className="input-field">
+          <label htmlFor="address">Address</label>
+          <input
+            id="address"
+            type="text"
+            {...register("address", { required: true })}
+            placeholder="Enter Your Address"
+          />
+          {errors.address && (
+            <span className="error-message">This field is required</span>
+          )}
+        </div>
+        <button type="button" onClick={props.displayPayment}>
+          Back
+        </button>
+        <button type="submit">Payment</button>
       </form>
     </div>
   );

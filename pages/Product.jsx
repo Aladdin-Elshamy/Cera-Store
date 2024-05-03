@@ -9,10 +9,16 @@ export default function Product() {
     size: "",
   });
   const navigate = useNavigate();
-
+  console.log(productID);
   React.useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${productID}`).then((res) =>
-      res.json().then((data) => {
+    fetch(`https://fakestoreapi.com/products/${productID}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
         const newData = {
           ...data,
           colors: ["#f00", "#0f0", "#00f"],
@@ -21,11 +27,13 @@ export default function Product() {
         console.log(newData);
         setProduct(newData);
         setSpecificProduct(newData);
-      }),
-    );
+      })
+      .catch((error) => {
+        navigate("/404");
+      });
   }, [productID]);
 
-  const { cartProducts, storeCartProducts } = useOutletContext();
+  const { storeCartProducts } = useOutletContext();
 
   const [productWantedQuantity, setWantedQuantity] = React.useState(0);
 
@@ -65,7 +73,7 @@ export default function Product() {
     navigate("/payment");
   }
   return (
-    <section className="product">
+    <section className="product container">
       <div className="product-img">
         <img src={product.image} alt={product.title} />
       </div>
@@ -83,6 +91,7 @@ export default function Product() {
                 backgroundColor: color,
                 width: "20px",
                 height: "20px",
+                borderRadius: "50%",
                 display: "inline-block",
               }}
               onClick={() => setProductColor(color)}

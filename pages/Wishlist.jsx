@@ -13,7 +13,7 @@ export default function Wishlist() {
     return <p>Your wishlist is empty</p>;
   }
   return (
-    <section className="wishlist">
+    <section className="wishlist container">
       {savedProducts.map((product) => (
         <div className="product" key={product.id}>
           <FaHeart className="heart-icon" />

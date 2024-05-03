@@ -3,6 +3,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
   Route,
+  Navigate,
 } from "react-router-dom";
 
 import RootLayout from "../components/RootLayout";
@@ -14,17 +15,21 @@ import Product from "../pages/Product";
 import Cart from "../pages/Cart";
 import Wishlist from "../pages/Wishlist";
 import Payment from "../pages/Payment";
+import Success from "../pages/Success";
+import Error404 from "../pages/404";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="#about" element={<About />} />
       <Route path="#collections" element={<Collections />} />
-      <Route path="/:id" element={<Product />} />
+      <Route path="product/:id" element={<Product />} />
       <Route path="#contact" element={<ContactUs />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/wishlist" element={<Wishlist />} />
-      <Route path="/payment" element={<Payment />} />
+      <Route path="cart" element={<Cart />} />
+      <Route path="wishlist" element={<Wishlist />} />
+      <Route path="payment" element={<Payment />} />
+      <Route path="success" element={<Success />} />
+      <Route path="*" element={<Error404 />} />
     </Route>,
   ),
 );

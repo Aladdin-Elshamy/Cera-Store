@@ -41,7 +41,7 @@ export default function Collections(props) {
       <h2 className="collections-title">Collections</h2>
       {displayedProducts?.map((product) => (
         <div className="product" key={product.id}>
-          <Link to={`/${product.id}`}>
+          <Link to={`/product/${product.id}`}>
             <div className="prodect-info">
               <img
                 src={product.image}
@@ -76,7 +76,7 @@ export default function Collections(props) {
           </button>
           <button
             className="buy-it-now"
-            onClick={() => navigate(`/${product.id}`)}
+            onClick={() => navigate(`/product/${product.id}`)}
           >
             Buy it now
           </button>
