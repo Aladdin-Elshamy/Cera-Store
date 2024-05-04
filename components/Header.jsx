@@ -1,17 +1,25 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
-import ScrollToHashElement from "./ScrollToHashElement";
+import { Link } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
-
+import Hamburger from "hamburger-react";
 import CartIcon from "./CartIcon";
 import FavouriteIcon from "./FavouriteIcon";
 import React from "react";
 export default function Header(props) {
-  let [hashes, setHashes] = React.useState({
+  const [hashes, setHashes] = React.useState({
     home: "work",
     about: "not-work",
     collections: "not-work",
     contact: "not-work",
   });
+  const [isOpen, setOpen] = React.useState(false);
+  const className = isOpen ? "show" : "hidden";
+
+  function closeMenu() {
+    if (isOpen) {
+      setOpen(false);
+    }
+  }
+  console.log(hashes);
   function makeActive(section) {
     if (section === "home") {
       setHashes({
@@ -44,50 +52,68 @@ export default function Header(props) {
     }
   }
   return (
-    <header>
-      <nav>
-        <div className="container">
-          <ScrollToHashElement />
-          <Link to="/" className="logo">
-            Cera
-          </Link>
-          <nav>
-            <NavLink
+    <header onClick={closeMenu}>
+      <div className="container" canClose={true}>
+        <nav>
+          <div className="navbar">
+            <div className="logo-container">
+              <Link to="/" className="logo">
+                Cera
+              </Link>
+            </div>
+            <div className="nav-icons">
+              <div className="burger-icon">
+                <Hamburger
+                  toggled={isOpen}
+                  toggle={setOpen}
+                  size={22}
+                  className="hamburger-icon"
+                  rounded
+                  label="Show menu"
+                  color="#40485E"
+                />
+              </div>
+
+              <CartIcon {...props} />
+              <FavouriteIcon {...props} />
+            </div>
+          </div>
+          <div className={`nav-links ${className}`}>
+            <NavHashLink
               className={hashes.home}
               onClick={() => makeActive("home")}
+              smooth
               to="/"
             >
               Home
-            </NavLink>
-
-            <NavLink
+            </NavHashLink>
+            <NavHashLink
               className={hashes.about}
               onClick={() => makeActive("about")}
+              smooth
               to="/#about"
             >
               About
-            </NavLink>
-
-            <NavLink
+            </NavHashLink>
+            <NavHashLink
               className={hashes.collections}
               onClick={() => makeActive("collections")}
+              smooth
               to="/#collections"
             >
               Collections
-            </NavLink>
-
-            <NavLink
+            </NavHashLink>
+            <NavHashLink
               className={hashes.contact}
               onClick={() => makeActive("contact")}
+              smooth
               to="/#contact-us"
             >
               Contact Us
-            </NavLink>
-          </nav>
-          <CartIcon {...props} />
-          <FavouriteIcon {...props} />
-        </div>
-      </nav>
+            </NavHashLink>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState, useMemo } from "react";
-import ScrollToHashElement from "./ScrollToHashElement";
 const imgs = [
   { src: "./images/pngwing1.png" },
   { src: "./images/pngwing2.png" },
@@ -13,7 +12,6 @@ export default function Hero() {
   }
   return (
     <section className="hero-section">
-      <ScrollToHashElement />
       <div className="hero-intro">
         <h1>Cera</h1>
         <p>Shop the latest collection of clothing and accessories</p>

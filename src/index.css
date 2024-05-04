@@ -1,13 +1,123 @@
-/* .product-colors{
-    display: flex;
-    gap:1em;
-<<<<<<< HEAD
-} */
-=======
-}
-.container{
-    width: 90%;
-    margin-inline: auto;
+:root{
+    --main-color:#E10F15;
+    --main-title-color:#1E1E1E;
+    --text-color:#868687;
+    --icons-color:#40485E;
+    --select-color:#E10F1580;
+    --non-select-color:#D9D9D9;
+    --bg-color:#F6F6F6;
 
 }
->>>>>>> 2a06956d40139d28e51a73a2bb0f44f76fca45c0
+*,*::before,*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+.container{
+    width: 85%;
+    max-width: 900px;
+    margin-inline: auto;
+}
+a{
+    text-decoration: none;
+}
+img{
+    width: 100%;
+}
+/* Header */
+header{
+    padding: 1rem 0;
+    background-color: var(--bg-color);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    color: var(--main-color);
+    font-size: 2rem;
+    font-weight: 700;
+}
+.nav-icons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.burger-icon{
+    position: relative;
+    left: 0.8rem;  
+   
+}
+.hidden{
+    display: none !important;
+}
+.show{
+    display: flex ;
+    flex-direction: column;
+}
+.nav-links{
+    display: flex;
+    
+    list-style: none;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.work{
+    color:var(--main-color) !important
+}
+.not-work{
+    color:#1E1E1E
+}
+
+.nav-links a{
+    color: var(--text-color);
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+    text-align: center;
+    padding-block: 1em;
+
+}
+.nav-links a:hover{
+    color: var(--main-color);
+    border-bottom: var(--main-color);
+}
+.nav-links a:not(:last-child){
+    border-bottom: 1px solid var(--non-select-color);
+}
+.cart-icon-container,.heart-icon-container{
+    position: relative;
+    color: var(--icons-color);
+}
+.cart-icon,.heart-icon{
+    font-size: 1.5rem;
+}
+.cart-count,.favourtie-count{
+    position: absolute;
+    top: -0.9rem;
+    right: -0.3rem;
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+}
+/* Hero */
+.hero-section{
+    margin-top: 5em;
+}
