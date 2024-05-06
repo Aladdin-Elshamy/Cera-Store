@@ -1,16 +1,18 @@
-import { Outlet } from "react-router-dom";
 import Pagination from "@mui/material/Pagination";
 import React from "react";
 import { Link, useOutletContext, useNavigate } from "react-router-dom";
-
-export default function Collections(props) {
+import { IoIosHeartEmpty } from "react-icons/io";
+import { IoHeart } from "react-icons/io5";
+import Aos from "aos";
+import "aos/dist/aos.css";
+export default function Collections({ data }) {
   const [productsRange, setProductsRange] = React.useState({
     start: 1,
     end: 10,
   });
 
-  const { storeProducts } = useOutletContext();
-  const products = JSON.parse(localStorage.getItem("data"));
+  const { storeProducts, removeProducts, savedProducts } = useOutletContext();
+  const products = data;
 
   const pagesNum = Math.ceil(products?.length / 10);
 
@@ -19,6 +21,12 @@ export default function Collections(props) {
     productsRange.end,
   );
   const navigate = useNavigate();
+  React.useEffect(() => {
+    Aos.init({ duration: 1500, disable: "mobile" });
+  }, []);
+  const checkIsFavourite = (product) => {
+    return savedProducts.some((savedProduct) => savedProduct.id === product.id);
+  };
   /**
    * Function to display the next set of products.
    *
@@ -27,9 +35,6 @@ export default function Collections(props) {
     const lastPost = page * 10;
 
     const firstPost = lastPost - 10 + 1;
-    console.log("last", lastPost);
-    console.log(firstPost);
-    console.log(productsRange.start);
     setProductsRange({
       start: firstPost,
       end: lastPost,
@@ -37,12 +42,25 @@ export default function Collections(props) {
     console.log(productsRange);
   }
   return (
-    <section id="collections" className="collections">
+    <section id="collections" className="collections" data-aos="fade-up">
       <h2 className="collections-title">Collections</h2>
-      {displayedProducts?.map((product) => (
-        <div className="product" key={product.id}>
-          <Link to={`/product/${product.id}`}>
-            <div className="prodect-info">
+      <div className="grid-container">
+        {displayedProducts?.map((product) => (
+          <div className="product" key={product.id}>
+            <div className="favourite-btn">
+              {checkIsFavourite(product) ? (
+                <IoHeart
+                  className="heart-icon fill"
+                  onClick={() => removeProducts(product)}
+                />
+              ) : (
+                <IoIosHeartEmpty
+                  className="heart-icon empty"
+                  onClick={() => storeProducts(product)}
+                />
+              )}
+            </div>
+            <div className="product-info">
               <img
                 src={product.image}
                 alt={product.title}
@@ -58,34 +76,27 @@ export default function Collections(props) {
                       className="color"
                       style={{
                         backgroundColor: color,
-                        width: "20px",
-                        height: "20px",
-                        display: "inline-block",
                       }}
                     ></span>
                   ))}
                 </div>
               </div>
             </div>
-          </Link>
-          <button
-            className="add-to-favourite"
-            onClick={() => storeProducts(product)}
-          >
-            Add to favourite
-          </button>
-          <button
-            className="buy-it-now"
-            onClick={() => navigate(`/product/${product.id}`)}
-          >
-            Buy it now
-          </button>
-        </div>
-      ))}
-      <Pagination
-        count={pagesNum}
-        onChange={(e, p) => displaySetOfProducts(e, p)}
-      />
+            <button
+              className="add-to-cart btn"
+              onClick={() => navigate(`/product/${product.id}`)}
+            >
+              Add to cart
+            </button>
+          </div>
+        ))}
+      </div>
+      <div className="pagination-container">
+        <Pagination
+          count={pagesNum}
+          onChange={(e, p) => displaySetOfProducts(e, p)}
+        />
+      </div>
     </section>
   );
 }

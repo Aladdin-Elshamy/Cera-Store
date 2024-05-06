@@ -1,24 +1,28 @@
 import { useOutletContext, Link } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
+import { IoHeart } from "react-icons/io5";
 export default function Wishlist() {
-  const { savedProducts, setSavedProducts } = useOutletContext();
-  function removeProducts(product) {
-    const newSavedProducts = savedProducts.filter(
-      (savedProduct) => savedProduct.id !== product.id,
-    );
-    localStorage.setItem("savedProducts", JSON.stringify(newSavedProducts));
-    setSavedProducts(newSavedProducts);
-  }
+  const { savedProducts, removeProducts } = useOutletContext();
   if (savedProducts.length === 0) {
-    return <p>Your wishlist is empty</p>;
+    return (
+      <section className="wishlist container">
+        <h1 className="wishlist-title">Your Wishlist</h1>
+        <p className="wishlist-empty-message">Your wishlist is empty</p>
+      </section>
+    );
   }
   return (
     <section className="wishlist container">
-      {savedProducts.map((product) => (
-        <div className="product" key={product.id}>
-          <FaHeart className="heart-icon" />
-          <Link to={`/product/${product.id}`}>
-            <div className="prodect-info">
+      <h2 className="wishlist-title">Collections</h2>
+      <div className="grid-container">
+        {savedProducts.map((product) => (
+          <div className="product" key={product.id}>
+            <div className="favourite-btn">
+              <IoHeart
+                className="heart-icon fill"
+                onClick={() => removeProducts(product)}
+              />
+            </div>
+            <div className="product-info">
               <img
                 src={product.image}
                 alt={product.title}
@@ -34,30 +38,21 @@ export default function Wishlist() {
                       className="color"
                       style={{
                         backgroundColor: color,
-                        width: "20px",
-                        height: "20px",
-                        display: "inline-block",
                       }}
                     ></span>
                   ))}
                 </div>
               </div>
             </div>
-          </Link>
-          <button
-            className="remove-from-favourite"
-            onClick={() => removeProducts(product)}
-          >
-            remove from favourite
-          </button>
-          <button
-            className="buy-it-now"
-            onClick={() => navigate(`/product/${product.id}`)}
-          >
-            Buy it now
-          </button>
-        </div>
-      ))}
+            <button
+              className="add-to-cart btn"
+              onClick={() => navigate(`/product/${product.id}`)}
+            >
+              Add to cart
+            </button>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

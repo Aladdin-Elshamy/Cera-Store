@@ -28,26 +28,25 @@ export default function Home() {
         });
         console.log(newData);
         setData(newData);
-        localStorage.setItem("data", JSON.stringify(newData));
         setLoading(false);
       } catch (error) {
         setError(true);
         setLoading(false);
       }
     }
-    const storedData = localStorage.getItem("data");
-    if (storedData) {
-      setData(JSON.parse(storedData));
-      setLoading(false);
-    } else {
-      fetchData();
-    }
+    fetchData();
   }, []);
   return (
     <div className="container">
       <Hero />
       <About />
-      {loading ? <p>Loading...</p> : error ? <p>Error</p> : <Collections />}
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p className="error-message">Error No Available Products</p>
+      ) : (
+        <Collections data={data} />
+      )}
       <ContactUs />
     </div>
   );

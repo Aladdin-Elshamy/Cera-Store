@@ -17,6 +17,13 @@ export default function RootLayout() {
       setSavedProducts((prevSavedProducts) => [...prevSavedProducts, product]);
     }
   }
+  function removeProducts(product) {
+    const newSavedProducts = savedProducts.filter(
+      (savedProduct) => savedProduct.id !== product.id,
+    );
+    localStorage.setItem("savedProducts", JSON.stringify(newSavedProducts));
+    setSavedProducts(newSavedProducts);
+  }
 
   function storeCartProducts(product, quantity) {
     product.quantity = quantity;
@@ -84,6 +91,7 @@ export default function RootLayout() {
         <Outlet
           context={{
             storeProducts,
+            removeProducts,
             savedProducts,
             storeCartProducts,
             cartProducts,
