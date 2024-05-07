@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Aladdin-Elshamy.github.io/Cera-Store/",
+  "homepage": "https://aladdin-elshamy.github.io/Cera-Store/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
