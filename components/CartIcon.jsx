@@ -1,6 +1,6 @@
 import { FaShoppingCart } from "react-icons/fa";
 import React from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CartIcon(props) {
   const { cartProducts } = props;

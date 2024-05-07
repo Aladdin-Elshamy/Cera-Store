@@ -84,7 +84,7 @@ export default function Collections({ data }) {
             </div>
             <button
               className="add-to-cart btn"
-              onClick={() => navigate(`Cera-Store/product/${product.id}`)}
+              onClick={() => navigate(`/product/${product.id}`)}
             >
               View Product
             </button>

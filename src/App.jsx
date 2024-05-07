@@ -21,15 +21,15 @@ const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
-      <Route path="#about" element={<About />} />
-      <Route path="#collections" element={<Collections />} />
-      <Route path="product/:id" element={<Product />} />
-      <Route path="#contact" element={<ContactUs />} />
-      <Route path="cart" element={<Cart />} />
-      <Route path="wishlist" element={<Wishlist />} />
-      <Route path="payment" element={<Payment />} />
-      <Route path="success" element={<Success />} />
-      <Route path="*" element={<Error404 />} />
+      <Route path="/#about" element={<About />} />
+      <Route path="/#collections" element={<Collections />} />
+      <Route path="/product/:id" element={<Product />} />
+      <Route path="/#contact" element={<ContactUs />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/wishlist" element={<Wishlist />} />
+      <Route path="/payment" element={<Payment />} />
+      <Route path="/success" element={<Success />} />
+      <Route path="/*" element={<Error404 />} />
     </Route>,
   ),
 );
