@@ -19,7 +19,7 @@ import Success from "../pages/Success";
 import Error404 from "../pages/404";
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <Route path="Cera-Store/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="#about" element={<About />} />
       <Route path="#collections" element={<Collections />} />

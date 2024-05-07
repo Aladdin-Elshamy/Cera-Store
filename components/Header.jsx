@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { NavHashLink } from "react-router-hash-link";
+import { NavHashLink, HashLink } from "react-router-hash-link";
 import Hamburger from "hamburger-react";
 import CartIcon from "./CartIcon";
 import FavouriteIcon from "./FavouriteIcon";
@@ -60,9 +60,9 @@ export default function Header(props) {
       <div className="container">
         <nav className="navbar">
           <div className="logo-container">
-            <Link to="/" className="logo">
+            <HashLink to="Cera-Store/" className="logo">
               Cera
-            </Link>
+            </HashLink>
           </div>
           <div className="burger-icon-container">
             <div className="burger-icon">
