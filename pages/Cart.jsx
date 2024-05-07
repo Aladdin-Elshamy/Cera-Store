@@ -72,7 +72,7 @@ export default function Cart() {
       })}
       <div className="cart-product-total" data-aos="fade-right">
         <p>Total price:</p>
-        <p>${cartProducts.reduce((a, b) => a + b.price, 0)}</p>
+        <p>${cartProducts.reduce((a, b) => a + b.price, 0).toFixed(2)}</p>
       </div>
       <button
         className="cart-checkout btn"

@@ -105,7 +105,7 @@ export default function Payment() {
         <div className="order-summary-total">
           <p className="order-summary-total-text">Total Payment:</p>
           <p className="order-summary-total-price">
-            ${cartProducts.reduce((a, b) => a + b.price, 0) + 10}
+            ${(cartProducts.reduce((a, b) => a + b.price, 0) + 10).toFixed(2)}
           </p>
         </div>
       </div>
