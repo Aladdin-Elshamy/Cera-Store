@@ -6,7 +6,7 @@ export default function FavouriteIcon(props) {
   const { savedProducts } = props;
   return (
     <div className="favourite">
-      <Link to="Cera-Store/wishlist" className="heart-icon-container">
+      <Link to="/wishlist" className="heart-icon-container">
         <FaHeart className="heart-icon" />
         <span className="favourtie-count">{savedProducts.length}</span>
       </Link>
