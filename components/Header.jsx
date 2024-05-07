@@ -60,7 +60,7 @@ export default function Header(props) {
       <div className="container">
         <nav className="navbar">
           <div className="logo-container">
-            <HashLink to="Cera-Store/" className="logo">
+            <HashLink to="/" className="logo">
               Cera
             </HashLink>
           </div>
