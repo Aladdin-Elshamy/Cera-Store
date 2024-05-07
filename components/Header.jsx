@@ -81,7 +81,7 @@ export default function Header(props) {
                 className={hashes.home}
                 onClick={() => makeActive("home")}
                 smooth
-                to="Cera-Store/"
+                to="/"
               >
                 Home
               </NavHashLink>
@@ -89,7 +89,7 @@ export default function Header(props) {
                 className={hashes.about}
                 onClick={() => makeActive("about")}
                 smooth
-                to="Cera-Store/#about"
+                to="/#about"
               >
                 About
               </NavHashLink>
