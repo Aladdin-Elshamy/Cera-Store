@@ -590,7 +590,7 @@ color: #000;
 }
 /* Footer */
 footer{
-    background-image: url(./images/bgfooter.png);
+    background-image: url(../public/images/bgfooter.png);
     color:#E7E7E3;
     margin-top: auto;
     flex-shrink: 0;
