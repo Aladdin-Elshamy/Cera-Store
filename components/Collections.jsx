@@ -15,7 +15,7 @@ export default function Collections({ data }) {
   const products = data;
 
   const pagesNum = Math.ceil(products?.length / 10);
-
+  const ref = React.useRef(null);
   const displayedProducts = products?.slice(
     productsRange.start - 1,
     productsRange.end,
@@ -32,8 +32,8 @@ export default function Collections({ data }) {
    *
    */
   function displaySetOfProducts(event, page) {
+    ref.current.scrollIntoView({ behavior: "smooth" });
     const lastPost = page * 10;
-
     const firstPost = lastPost - 10 + 1;
     setProductsRange({
       start: firstPost,
@@ -41,7 +41,12 @@ export default function Collections({ data }) {
     });
   }
   return (
-    <section id="collections" className="collections" data-aos="fade-up">
+    <section
+      id="collections"
+      className="collections"
+      data-aos="fade-up"
+      ref={ref}
+    >
       <h2 className="collections-title">Collections</h2>
       <div className="grid-container">
         {displayedProducts?.map((product) => (
