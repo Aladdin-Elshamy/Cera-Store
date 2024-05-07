@@ -64,7 +64,7 @@ export default function Wishlist() {
             </div>
             <button
               className="add-to-cart btn"
-              onClick={() => navigate(`/product/${product.id}`)}
+              onClick={() => navigate(`Cera-Store/product/${product.id}`)}
             >
               Add to cart
             </button>

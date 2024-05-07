@@ -17,7 +17,7 @@ export default function PersonalInfoForm(props) {
   }
   function onSubmit(data) {
     clearCart();
-    navigate("/success", { replace: true });
+    navigate("Cera-Store/success", { replace: true });
   }
   return (
     <div className="personal-info" data-aos="fade-right">

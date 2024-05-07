@@ -81,7 +81,7 @@ export default function Header(props) {
                 className={hashes.home}
                 onClick={() => makeActive("home")}
                 smooth
-                to="/"
+                to="Cera-Store/"
               >
                 Home
               </NavHashLink>
@@ -89,7 +89,7 @@ export default function Header(props) {
                 className={hashes.about}
                 onClick={() => makeActive("about")}
                 smooth
-                to="/#about"
+                to="Cera-Store/#about"
               >
                 About
               </NavHashLink>
@@ -97,7 +97,7 @@ export default function Header(props) {
                 className={hashes.collections}
                 onClick={() => makeActive("collections")}
                 smooth
-                to="/#collections"
+                to="Cera-Store/#collections"
               >
                 Collections
               </NavHashLink>
@@ -105,7 +105,7 @@ export default function Header(props) {
                 className={hashes.contact}
                 onClick={() => makeActive("contact")}
                 smooth
-                to="/#contact-us"
+                to="Cera-Store/#contact-us"
               >
                 Contact Us
               </NavHashLink>

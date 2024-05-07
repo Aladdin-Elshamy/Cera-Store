@@ -70,7 +70,7 @@ export default function Product() {
   }
   function addToCart(specificProduct, productWantedQuantity) {
     storeCartProducts(specificProduct, productWantedQuantity);
-    navigate("/payment");
+    navigate("Cera-Store/payment");
   }
   return (
     <section className="product-page container">
