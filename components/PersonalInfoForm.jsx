@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import React from "react";
 export default function PersonalInfoForm(props) {
   const {
     register,
@@ -19,6 +20,10 @@ export default function PersonalInfoForm(props) {
     clearCart();
     navigate("/success", { replace: true });
   }
+
+  React.useEffect(() => {
+    Aos.init({ duration: 1500, disable: "mobile", once: true });
+  }, []);
   return (
     <div className="personal-info" data-aos="fade-right">
       <h1 className="personal-info-title">Personal Information</h1>

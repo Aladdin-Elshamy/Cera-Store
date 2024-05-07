@@ -52,7 +52,7 @@ export default function Payment() {
                 value="vf-cash"
                 onChange={handleChange}
               />
-              <label htmlFor="debit-card">VF Cash</label>
+              <label htmlFor="vf-cash">VF Cash</label>
             </div>
           </div>
           <button
