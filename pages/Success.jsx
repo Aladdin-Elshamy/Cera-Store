@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 export default function Success() {
   const navigate = useNavigate();
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     Aos.init({
       duration: 1500,
       disable: "mobile",

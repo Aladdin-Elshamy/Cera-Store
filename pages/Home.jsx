@@ -3,12 +3,12 @@ import About from "../components/About";
 import Collections from "../components/Collections";
 import ContactUs from "../components/ContactUs";
 import React from "react";
-import { Link, useOutletContext } from "react-router-dom";
 export default function Home() {
   const [data, setData] = React.useState({});
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     async function fetchData() {
       try {
         const response = await fetch(

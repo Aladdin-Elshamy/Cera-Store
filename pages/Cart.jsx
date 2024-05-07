@@ -18,6 +18,7 @@ export default function Cart() {
     setCartProducts(newSavedCartProducts);
   }
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     Aos.init({
       duration: 1500,
       disable: "mobile",

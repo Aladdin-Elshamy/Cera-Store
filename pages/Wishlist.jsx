@@ -7,6 +7,7 @@ export default function Wishlist() {
   const { savedProducts, removeProducts } = useOutletContext();
   const navigate = useNavigate();
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     Aos.init({
       duration: 1500,
       disable: "mobile",
@@ -64,7 +65,7 @@ export default function Wishlist() {
             </div>
             <button
               className="add-to-cart btn"
-              onClick={() => navigate(`Cera-Store/product/${product.id}`)}
+              onClick={() => navigate(`/product/${product.id}`)}
             >
               Add to cart
             </button>

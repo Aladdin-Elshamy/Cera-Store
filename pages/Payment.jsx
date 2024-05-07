@@ -15,6 +15,7 @@ export default function Payment() {
     sessionStorage.setItem("paymentMethod", event.target.value);
   }
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     Aos.init({ duration: 1500, disable: "mobile", once: true });
     const paymentMethod = sessionStorage.getItem("paymentMethod");
     if (paymentMethod) {

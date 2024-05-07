@@ -1,6 +1,6 @@
 import Pagination from "@mui/material/Pagination";
 import React from "react";
-import { Link, useOutletContext, useNavigate } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import Aos from "aos";
@@ -39,7 +39,6 @@ export default function Collections({ data }) {
       start: firstPost,
       end: lastPost,
     });
-    console.log(productsRange);
   }
   return (
     <section id="collections" className="collections" data-aos="fade-up">
