@@ -3,8 +3,8 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 export default function About() {
   React.useEffect(() => {
-    Aos.init({ duration: 1500, disable: "mobile" });
-  });
+    Aos.init({ duration: 1500, disable: "mobile", once: true });
+  }, []);
   return (
     <section className="about-section" id="about">
       <div className="about-pic" data-aos="fade-right">

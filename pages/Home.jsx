@@ -22,7 +22,7 @@ export default function Home() {
         const newData = data.map((product) => {
           return {
             ...product,
-            colors: ["#f00", "#0f0", "#00f"],
+            colors: ["red", "green", "blue"],
             sizes: [36, 37, 38],
           };
         });
@@ -41,9 +41,13 @@ export default function Home() {
       <Hero />
       <About />
       {loading ? (
-        <p>Loading...</p>
+        <h1 className="loading" id="collections">
+          Loading...
+        </h1>
       ) : error ? (
-        <p className="error-message">Error No Available Products</p>
+        <p className="error-message" id="collections">
+          Error No Available Products
+        </p>
       ) : (
         <Collections data={data} />
       )}

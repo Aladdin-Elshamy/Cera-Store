@@ -5,6 +5,7 @@ import Footer from "./Footer";
 export default function RootLayout() {
   const [savedProducts, setSavedProducts] = React.useState([]);
   const [cartProducts, setCartProducts] = React.useState([]);
+
   function storeProducts(product) {
     const foundElement = savedProducts.find(
       (savedProduct) => savedProduct.id === product.id,
@@ -40,6 +41,7 @@ export default function RootLayout() {
     console.log(foundElement);
     if (!foundElement) {
       product.quantity = quantity;
+      product.price = product.price * product.quantity;
       const newCartProducts = [...cartProducts, product];
       localStorage.setItem("cartProducts", JSON.stringify(newCartProducts));
       setCartProducts(newCartProducts);
@@ -54,6 +56,7 @@ export default function RootLayout() {
             return {
               ...cartProduct,
               quantity: product.quantity,
+              price: product.price * product.quantity,
             };
           }
           return cartProduct;

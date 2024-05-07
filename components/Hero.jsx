@@ -32,7 +32,7 @@ export default function Hero() {
   }
 
   useEffect(() => {
-    Aos.init({ duration: 1500, disable: "mobile" });
+    Aos.init({ duration: 1500, disable: "mobile", once: true });
     const interval = setInterval(() => {
       changeImg(ref.current);
       ref.current++;

@@ -22,7 +22,7 @@ export default function Collections({ data }) {
   );
   const navigate = useNavigate();
   React.useEffect(() => {
-    Aos.init({ duration: 1500, disable: "mobile" });
+    Aos.init({ duration: 1500, disable: "mobile", once: true });
   }, []);
   const checkIsFavourite = (product) => {
     return savedProducts.some((savedProduct) => savedProduct.id === product.id);
@@ -86,7 +86,7 @@ export default function Collections({ data }) {
               className="add-to-cart btn"
               onClick={() => navigate(`/product/${product.id}`)}
             >
-              Add to cart
+              View Product
             </button>
           </div>
         ))}

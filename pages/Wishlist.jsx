@@ -1,7 +1,18 @@
-import { useOutletContext, Link } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
+import React from "react";
 import { IoHeart } from "react-icons/io5";
+import Aos from "aos";
+import "aos/dist/aos.css";
 export default function Wishlist() {
   const { savedProducts, removeProducts } = useOutletContext();
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    Aos.init({
+      duration: 1500,
+      disable: "mobile",
+      once: true,
+    });
+  }, []);
   if (savedProducts.length === 0) {
     return (
       <section className="wishlist container">
@@ -10,12 +21,19 @@ export default function Wishlist() {
       </section>
     );
   }
+
   return (
     <section className="wishlist container">
-      <h2 className="wishlist-title">Collections</h2>
+      <h2 className="wishlist-title" data-aos="zoom-in">
+        Your Wishlist
+      </h2>
       <div className="grid-container">
-        {savedProducts.map((product) => (
-          <div className="product" key={product.id}>
+        {savedProducts.map((product, i) => (
+          <div
+            className="product"
+            key={product.id}
+            data-aos={i % 2 === 0 ? "fade-right" : "fade-left"}
+          >
             <div className="favourite-btn">
               <IoHeart
                 className="heart-icon fill"

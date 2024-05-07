@@ -1,31 +1,38 @@
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
-
+import { HashLink } from "react-router-hash-link";
+import React from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 export default function Footer() {
+  React.useEffect(() => {
+    Aos.init({ duration: 1500, disable: "mobile", once: true });
+  }, []);
   return (
     <footer>
-      <div className="container">
+      <div className="container" data-aos="fade-up">
         <div className="first-row">
           <div className="first-column">
             <h3 className="cera-logo">Cera</h3>
             <p className="first-column-text">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem.
+              At our online store, we believe that footwear and accessories are
+              not just items to wear; they are expressions of style,
+              personality, and functionality. We're passionate about providing
+              you with a curated selection of shoes and bags that combine
+              quality, comfort, and trendsetting designs.
             </p>
           </div>
           <div className="second-column">
             <h4 className="second-column-title">Company</h4>
             <ul>
               <li>
-                <Link to="/#about">About</Link>
+                <HashLink to="/#about">About</HashLink>
               </li>
               <li>
-                <Link to="/#contact">Contact</Link>
+                <HashLink to="/#contact">Contact</HashLink>
               </li>
               <li>
-                <Link to="/#collections">Collections</Link>
+                <HashLink to="/#collections">Collections</HashLink>
               </li>
             </ul>
           </div>

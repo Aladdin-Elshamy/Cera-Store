@@ -22,8 +22,8 @@ export default function Header(props) {
     }
   }
   React.useEffect(() => {
-    Aos.init({ duration: 1500, disable: "phone" });
-  });
+    Aos.init({ duration: 1500, disable: "mobile", once: true });
+  }, []);
   function makeActive(section) {
     if (section === "home") {
       setHashes({

@@ -1,9 +1,12 @@
 import { useOutletContext, useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
-
+import React from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 export default function Cart() {
   const { cartProducts, setCartProducts } = useOutletContext();
   const navigate = useNavigate();
+
   function deleteProduct(product) {
     const newSavedCartProducts = cartProducts.filter(
       (savedCartProduct) =>
@@ -14,21 +17,29 @@ export default function Cart() {
     localStorage.setItem("cartProducts", JSON.stringify(newSavedCartProducts));
     setCartProducts(newSavedCartProducts);
   }
+  React.useEffect(() => {
+    Aos.init({
+      duration: 1500,
+      disable: "mobile",
+      once: true,
+    });
+  });
   if (cartProducts.length === 0) {
     return (
-      <section className="cart">
+      <section className="cart container">
         <h1 className="cart-title">Your Cart</h1>
         <p className="cart-empty-message">Your cart is empty</p>
       </section>
     );
   }
   return (
-    <section className="cart container">
+    <section className="cart-page container">
       <h1 className="cart-title">Your Cart</h1>
       {cartProducts?.map((savedCartProduct) => {
         return (
           <div
             className="cart-product"
+            data-aos="fade-left"
             key={
               savedCartProduct.id +
               savedCartProduct.colors +
@@ -49,28 +60,28 @@ export default function Cart() {
                 <p>Size: {savedCartProduct.sizes}</p>
               </div>
               <div className="card-product-price-delete">
-                <p className="cart-product-price">{savedCartProduct.price}</p>
+                <p className="cart-product-price">${savedCartProduct.price}</p>
                 <button onClick={() => deleteProduct(savedCartProduct)}>
                   <MdDelete />
                 </button>
               </div>
             </div>
-            <hr />
-            <div className="cart-product-total">
-              <p>Total price:</p>
-              <p>{cartProducts.reduce((a, b) => a + b.price, 0)}</p>
-            </div>
-            <button
-              className="cart-checkout"
-              onClick={() => {
-                navigate("/payment");
-              }}
-            >
-              Checkout
-            </button>
+            <div className="divider" />
           </div>
         );
       })}
+      <div className="cart-product-total" data-aos="fade-right">
+        <p>Total price:</p>
+        <p>${cartProducts.reduce((a, b) => a + b.price, 0)}</p>
+      </div>
+      <button
+        className="cart-checkout btn"
+        onClick={() => {
+          navigate("/payment");
+        }}
+      >
+        Checkout
+      </button>
     </section>
   );
 }

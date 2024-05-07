@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 export default function PersonalInfoForm(props) {
   const {
     register,
@@ -18,7 +20,7 @@ export default function PersonalInfoForm(props) {
     navigate("/success", { replace: true });
   }
   return (
-    <div className="personal-info">
+    <div className="personal-info" data-aos="fade-right">
       <h1 className="personal-info-title">Personal Information</h1>
       {props.paymentMethod === "vf-cash" ? (
         <h2>Vodafone Cash:01009876654</h2>
@@ -32,9 +34,11 @@ export default function PersonalInfoForm(props) {
             placeholder="Enter Your Name"
           />
           {errors.name?.type === "required" ? (
-            <span>This field is required</span>
+            <span className="error-message">This field is required</span>
           ) : (
-            errors.name?.type === "maxLength" && <span>Max lenght is 20</span>
+            errors.name?.type === "maxLength" && (
+              <span className="error-message">Max lenght is 20</span>
+            )
           )}
         </div>
         <div className="input-field">
@@ -68,12 +72,12 @@ export default function PersonalInfoForm(props) {
           <input
             id="countery"
             type="text"
-            {...register("countery", { required: true })}
+            value={"Egypt"}
+            disabled
+            className="disabled-input"
+            {...register("countery")}
             placeholder="Enter Your Countery"
           />
-          {errors.countery && (
-            <span className="error-message">This field is required</span>
-          )}
         </div>
         <div className="input-field">
           <label htmlFor="address">Address</label>
@@ -87,10 +91,16 @@ export default function PersonalInfoForm(props) {
             <span className="error-message">This field is required</span>
           )}
         </div>
-        <button type="button" onClick={props.displayPayment}>
+        <button type="submit" className="btn">
+          Checkout
+        </button>
+        <button
+          type="button"
+          className="btn btn-back"
+          onClick={props.displayPayment}
+        >
           Back
         </button>
-        <button type="submit">Payment</button>
       </form>
     </div>
   );

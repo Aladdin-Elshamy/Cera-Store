@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { FaLocationDot } from "react-icons/fa6";
+import { SlLocationPin } from "react-icons/sl";
 import { FiPhoneCall } from "react-icons/fi";
 import { MdMailOutline } from "react-icons/md";
 import Aos from "aos";
@@ -17,7 +17,7 @@ export default function ContactUs() {
     console.log(errors);
   }
   React.useEffect(() => {
-    Aos.init({ duration: 1500, disable: "mobile" });
+    Aos.init({ duration: 1500, disable: "mobile", once: true });
   }, []);
   return (
     <section className="contact-us" id="contact-us">
@@ -80,7 +80,7 @@ export default function ContactUs() {
           <a href="https://www.gps.ie/">gps vehicle tracker</a>
         </iframe>
         <div className="contact-info-text">
-          <FaLocationDot />
+          <SlLocationPin />
           <p>Damanhour, Egypt</p>
         </div>
         <div className="contact-info-text">

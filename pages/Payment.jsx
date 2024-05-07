@@ -1,15 +1,26 @@
 import { useOutletContext } from "react-router-dom";
 import PersonalInfoForm from "../components/PersonalInfoForm";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import React from "react";
 export default function Payment() {
   const { cartProducts } = useOutletContext();
   const [paymentMethod, setPaymentMethod] = React.useState(null);
   function handleChange(event) {
+    sessionStorage.setItem("paymentMethod", event.target.value);
     setPaymentMethod(event.target.value);
   }
-  function displayPayment() {
+  function displayPayment(event) {
     setPaymentMethod(null);
+    sessionStorage.setItem("paymentMethod", event.target.value);
   }
+  React.useEffect(() => {
+    Aos.init({ duration: 1500, disable: "mobile", once: true });
+    const paymentMethod = sessionStorage.getItem("paymentMethod");
+    if (paymentMethod) {
+      setPaymentMethod(paymentMethod);
+    }
+  }, []);
   return (
     <section className="payment container">
       {paymentMethod ? (
@@ -18,7 +29,7 @@ export default function Payment() {
           paymentMethod={paymentMethod}
         />
       ) : (
-        <div className="payment-method">
+        <div className="payment-method" data-aos="fade-right">
           <h1 className="payment-method-title">Payment Method</h1>
           <p className="payment-method-text">Please select a payment method</p>
           <div className="payment-method-options">
@@ -43,12 +54,15 @@ export default function Payment() {
               <label htmlFor="debit-card">VF Cash</label>
             </div>
           </div>
-          <button className="payment-method-submit" disabled={!paymentMethod}>
-            Next
+          <button
+            className="payment-method-submit btn"
+            disabled={!paymentMethod}
+          >
+            Checkout
           </button>
         </div>
       )}
-      <div className="order-summary">
+      <div className="order-summary" data-aos="fade-left">
         <h1 className="order-summary-title">Order Summary</h1>
         {cartProducts.map((product) => (
           <div className="order-summary-product" key={product.id}>
@@ -77,18 +91,19 @@ export default function Payment() {
           </div>
         ))}
         <div className="order-summary-total">
-          <p className="order-summary-total-text">Total</p>
+          <p className="order-summary-total-text">Total Price:</p>
           <p className="order-summary-total-price">
             ${cartProducts.reduce((a, b) => a + b.price, 0)}
           </p>
         </div>
+        <hr />
         <div className="order-summary-shipping">
           <p className="order-summary-shipping-text">Shipping</p>
           <p className="order-summary-shipping-price">$10</p>
         </div>
         <hr />
         <div className="order-summary-total">
-          <p className="order-summary-total-text">Total</p>
+          <p className="order-summary-total-text">Total Payment:</p>
           <p className="order-summary-total-price">
             ${cartProducts.reduce((a, b) => a + b.price, 0) + 10}
           </p>

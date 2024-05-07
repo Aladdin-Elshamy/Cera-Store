@@ -21,7 +21,7 @@ export default function Product() {
       .then((data) => {
         const newData = {
           ...data,
-          colors: ["#f00", "#0f0", "#00f"],
+          colors: ["red", "green", "blue"],
           sizes: [36, 37, 38],
         };
         console.log(newData);
@@ -73,7 +73,7 @@ export default function Product() {
     navigate("/payment");
   }
   return (
-    <section className="product container">
+    <section className="product-page container">
       <div className="product-img">
         <img src={product.image} alt={product.title} />
       </div>
@@ -86,13 +86,11 @@ export default function Product() {
           {product.colors?.map((color) => (
             <span
               key={color}
-              className="color"
+              className={
+                productDetail.color === color ? "color selected-color" : "color"
+              }
               style={{
                 backgroundColor: color,
-                width: "20px",
-                height: "20px",
-                borderRadius: "50%",
-                display: "inline-block",
               }}
               onClick={() => setProductColor(color)}
             ></span>
@@ -103,7 +101,9 @@ export default function Product() {
           {product.sizes?.map((size) => (
             <span
               key={size}
-              className="product-size"
+              className={
+                productDetail.size === size ? "size selected-size" : "size"
+              }
               onClick={() => setProductSize(size)}
             >
               {size}
@@ -129,7 +129,7 @@ export default function Product() {
           </button>
         </div>
         <button
-          className="add-to-cart"
+          className="add-to-cart btn"
           onClick={() =>
             storeCartProducts(specificProduct, productWantedQuantity)
           }
@@ -142,7 +142,7 @@ export default function Product() {
           Add to cart
         </button>
         <button
-          className="buy-it-now"
+          className="buy-it-now btn"
           onClick={() => addToCart(specificProduct, productWantedQuantity)}
           disabled={
             productDetail.color && productDetail.size && productWantedQuantity
