@@ -15,7 +15,6 @@ export default function Payment() {
     sessionStorage.setItem("paymentMethod", event.target.value);
   }
   React.useEffect(() => {
-    window.scrollTo(0, 0);
     Aos.init({ duration: 1500, disable: "mobile", once: true });
     const paymentMethod = sessionStorage.getItem("paymentMethod");
     if (paymentMethod) {
@@ -23,14 +22,14 @@ export default function Payment() {
     }
   }, []);
   return (
-    <section className="payment container">
+    <section className="payment container" data-aos="zoom-in">
       {paymentMethod ? (
         <PersonalInfoForm
           displayPayment={displayPayment}
           paymentMethod={paymentMethod}
         />
       ) : (
-        <div className="payment-method" data-aos="fade-right">
+        <div className="payment-method">
           <h1 className="payment-method-title">Payment Method</h1>
           <p className="payment-method-text">Please select a payment method</p>
           <div className="payment-method-options">
@@ -63,7 +62,7 @@ export default function Payment() {
           </button>
         </div>
       )}
-      <div className="order-summary" data-aos="fade-left">
+      <div className="order-summary">
         <h1 className="order-summary-title">Order Summary</h1>
         {cartProducts.map((product) => (
           <div className="order-summary-product" key={product.id}>

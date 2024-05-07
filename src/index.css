@@ -942,6 +942,11 @@ footer ul{
     color:var(--main-color);
     font-size: 2rem;
 }
+@media (max-width:767px){
+    .personal-info-title{
+        padding-top: 0.25em;
+    }
+}
 .payment-method-text{
     color:var(--text-color);
     font-size: 1.1rem;
@@ -980,6 +985,9 @@ footer ul{
 }
 .input-field{
     gap:0.3em;
+}
+.personal-info{
+    gap:0.75em
 }
 .personal-info input{
     padding: 0.5em 1em;
