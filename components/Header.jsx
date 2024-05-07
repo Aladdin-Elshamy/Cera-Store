@@ -60,7 +60,7 @@ export default function Header(props) {
       <div className="container">
         <nav className="navbar">
           <div className="logo-container">
-            <HashLink to="Cera-Store/" className="logo">
+            <HashLink to="/" className="logo">
               Cera
             </HashLink>
           </div>
@@ -97,7 +97,7 @@ export default function Header(props) {
                 className={hashes.collections}
                 onClick={() => makeActive("collections")}
                 smooth
-                to="Cera-Store/#collections"
+                to="/#collections"
               >
                 Collections
               </NavHashLink>
@@ -105,7 +105,7 @@ export default function Header(props) {
                 className={hashes.contact}
                 onClick={() => makeActive("contact")}
                 smooth
-                to="Cera-Store/#contact-us"
+                to="/#contact-us"
               >
                 Contact Us
               </NavHashLink>

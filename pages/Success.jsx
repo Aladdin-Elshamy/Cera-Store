@@ -24,7 +24,7 @@ export default function Success() {
           Thank you for ordering our <br />
           products!
         </p>
-        <button onClick={() => navigate("Cera-Store/")} className="btn">
+        <button onClick={() => navigate("/")} className="btn">
           Back to Home
         </button>
       </div>
