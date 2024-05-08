@@ -763,7 +763,8 @@ footer ul{
     height: 1rem;
     cursor: pointer;
     padding: 1em 2em;
-    border: 5px solid var(--non-select-color);
+    border: none ;
+    
     border-radius: 0.2em;
 }
 .product-page .size{
@@ -777,8 +778,7 @@ footer ul{
 }
 .selected-color{
 
-    border: none !important;
-
+    border: 5px solid var(--non-select-color) !important;
 }
 .product-quantity{
     border: 2px solid var(--non-select-color);
