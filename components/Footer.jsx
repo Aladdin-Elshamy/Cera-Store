@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
 import { HashLink } from "react-router-hash-link";
 import React from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 export default function Footer() {
+  const ref = useRef(null);
   React.useEffect(() => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
     Aos.init({ duration: 1500, disable: "mobile", once: true });
   }, []);
   return (
-    <footer>
+    <footer ref={ref}>
       <div className="container" data-aos="fade-up">
         <div className="first-row">
           <div className="first-column">

@@ -22,6 +22,7 @@ export default function Collections({ data }) {
   );
   const navigate = useNavigate();
   React.useEffect(() => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
     Aos.init({ duration: 1500, disable: "mobile", once: true });
   }, []);
   const checkIsFavourite = (product) => {

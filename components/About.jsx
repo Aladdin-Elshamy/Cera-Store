@@ -2,12 +2,13 @@ import React from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 export default function About() {
+  const ref = React.useRef(null);
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    ref.current.scrollIntoView({ behavior: "smooth" });
     Aos.init({ duration: 1500, disable: "mobile", once: true });
   }, []);
   return (
-    <section className="about-section" id="about">
+    <section className="about-section" id="about" ref={ref}>
       <div className="about-pic" data-aos="fade-right">
         <img src="./images/imgStand.png" alt="about-pic" />
       </div>
