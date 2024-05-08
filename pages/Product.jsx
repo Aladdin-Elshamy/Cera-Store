@@ -116,7 +116,7 @@ export default function Product() {
         </div>
         <div className="product-quantity">
           <button
-            className="product-quantity-btn decrease"
+            className="product-quantity-btn"
             onClick={decreaseWantedQuantity}
             disabled={productWantedQuantity === 0}
           >

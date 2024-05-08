@@ -27,7 +27,7 @@ export default function Cart() {
   });
   if (cartProducts.length === 0) {
     return (
-      <section className="cart container" data-aos="zoom-in">
+      <section className="cart container">
         <h1 className="cart-title">Your Cart</h1>
         <p className="cart-empty-message">Your cart is empty</p>
       </section>
