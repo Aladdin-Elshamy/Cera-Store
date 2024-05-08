@@ -27,20 +27,19 @@ export default function Cart() {
   });
   if (cartProducts.length === 0) {
     return (
-      <section className="cart container">
+      <section className="cart container" data-aos="zoom-in">
         <h1 className="cart-title">Your Cart</h1>
         <p className="cart-empty-message">Your cart is empty</p>
       </section>
     );
   }
   return (
-    <section className="cart-page container">
+    <section className="cart-page container" data-aos="zoom-in">
       <h1 className="cart-title">Your Cart</h1>
       {cartProducts?.map((savedCartProduct) => {
         return (
           <div
             className="cart-product"
-            data-aos="fade-left"
             key={
               savedCartProduct.id +
               savedCartProduct.colors +
@@ -71,7 +70,7 @@ export default function Cart() {
           </div>
         );
       })}
-      <div className="cart-product-total" data-aos="fade-right">
+      <div className="cart-product-total">
         <p>Total price:</p>
         <p>${cartProducts.reduce((a, b) => a + b.price, 0).toFixed(2)}</p>
       </div>
