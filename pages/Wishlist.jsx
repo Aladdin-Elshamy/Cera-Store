@@ -16,7 +16,7 @@ export default function Wishlist() {
   }, []);
   if (savedProducts.length === 0) {
     return (
-      <section className="wishlist container">
+      <section className="wishlist container" data-aos="zoom-in">
         <h1 className="wishlist-title">Your Wishlist</h1>
         <p className="wishlist-empty-message">Your wishlist is empty</p>
       </section>
