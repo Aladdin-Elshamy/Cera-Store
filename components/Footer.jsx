@@ -4,7 +4,7 @@ import React from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 export default function Footer() {
-  const ref = useRef(null);
+  const ref = React.useRef(null);
   React.useEffect(() => {
     ref.current.scrollIntoView({ behavior: "smooth" });
     Aos.init({ duration: 1500, disable: "mobile", once: true });
