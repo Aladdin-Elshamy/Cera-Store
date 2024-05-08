@@ -11,17 +11,17 @@ export default function ContactUs() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const ref = useRef(null);
+
   function onSubmit(data) {
     console.log(data);
     console.log(errors);
   }
   React.useEffect(() => {
-    ref.current.scrollIntoView({ behavior: "smooth" });
+    window.scrollTo(0, 0);
     Aos.init({ duration: 1500, disable: "mobile", once: true });
   }, []);
   return (
-    <section className="contact-us" id="contact-us" ref={ref}>
+    <section className="contact-us" id="contact-us">
       <div className="contact-us-form" data-aos="fade-right">
         <h2 className="contact-us-title">Contact Us</h2>
         <form action="" onSubmit={handleSubmit(onSubmit)}>
