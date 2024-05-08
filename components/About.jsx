@@ -3,7 +3,6 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 export default function About() {
   React.useEffect(() => {
-    window.scrollTo(0, 0);
     Aos.init({ duration: 1500, disable: "mobile", once: true });
   }, []);
   return (

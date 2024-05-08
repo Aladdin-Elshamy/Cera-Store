@@ -22,7 +22,6 @@ export default function Collections({ data }) {
   );
   const navigate = useNavigate();
   React.useEffect(() => {
-    window.scrollTo(0, 0);
     Aos.init({ duration: 1500, disable: "mobile", once: true });
   }, []);
   const checkIsFavourite = (product) => {
@@ -45,7 +44,12 @@ export default function Collections({ data }) {
     displaySetOfProducts(event, page);
   }
   return (
-    <section id="collections" className="collections" data-aos="fade-up">
+    <section
+      id="collections"
+      className="collections"
+      data-aos="fade-up"
+      ref={ref}
+    >
       <h2 className="collections-title">Collections</h2>
       <div className="grid-container">
         {displayedProducts?.map((product) => (
