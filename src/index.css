@@ -718,6 +718,7 @@ footer ul{
 /* Product Page */
 .product-page .product-img {
     padding-bottom: 1em;
+    max-width: 400px;
 
 }
 .product-page .product-img img{
@@ -814,7 +815,6 @@ footer ul{
     padding: 0.5em 6em;
     border-radius: 0.5em;
     font-size: 1rem;
-    width: fit-content;
     cursor: pointer;
 }
 
@@ -824,9 +824,14 @@ footer ul{
         grid-template-columns: 1fr 1fr;
         gap:2em;
         align-items: center;
+        justify-items: center;
     }
     .product-page .product-img img{
         height: 100%;
+    }
+    .product-page .add-to-cart
+    ,.product-page .buy-it-now{
+        width: fit-content;
     }
 }
 
@@ -835,7 +840,7 @@ footer ul{
 .cart-page{
     display: flex;
     flex-direction: column;
-    gap:1em;
+    gap:1.5em;
     padding: 1em;
 
 }
@@ -922,7 +927,9 @@ footer ul{
 
     }
     .cart-product .cart-product-img img{
-        height: 100%;
+        min-height: 250px;
+        max-width: 400px;
+        min-width: 200px;
     }
 }
 /* Payment Page */
@@ -966,6 +973,9 @@ footer ul{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.order-summary-product-description{
+    line-height: 1.5;
 }
 .order-summary-product-img img{
     width: 100%;
@@ -1031,6 +1041,7 @@ input[type=number] {
     padding: 0.5em 1em;
     cursor: pointer;
 }
+
 @media (min-width:768px){
     .payment{
         flex-direction: row;
@@ -1054,12 +1065,16 @@ input[type=number] {
         order: 1;
         gap: 2em;
     }
+    .order-summary-product-img{
+        margin-inline: auto;
+        width: 100%;
+    }
     .order-summary-product{
-        flex-direction: row;
+        flex-direction: column;
     }
     .order-summary-product img{
-        height: 100%;
-        min-width: 250px;
+        max-height: 300px;
+        width: 100%;
         object-fit: contain;
         background-color: #fff;
         border-radius: 0.5em;
@@ -1072,6 +1087,16 @@ input[type=number] {
     ,.order-summary-shipping{
         display: flex;
         justify-content: space-between;
+    }
+}
+@media (min-width:1200px){
+    .order-summary-product{
+        flex-direction: row;
+    }
+    .order-summary-product img{
+        height: 300px;
+        min-width: 250px;
+        max-width: 300px;
     }
 }
 /* Success Page */
