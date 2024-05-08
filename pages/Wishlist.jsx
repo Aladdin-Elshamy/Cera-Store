@@ -24,17 +24,11 @@ export default function Wishlist() {
   }
 
   return (
-    <section className="wishlist container">
-      <h2 className="wishlist-title" data-aos="zoom-in">
-        Your Wishlist
-      </h2>
+    <section className="wishlist container" data-aos="zoom-in">
+      <h2 className="wishlist-title">Your Wishlist</h2>
       <div className="grid-container">
-        {savedProducts.map((product, i) => (
-          <div
-            className="product"
-            key={product.id}
-            data-aos={i % 2 === 0 ? "fade-right" : "fade-left"}
-          >
+        {savedProducts.map((product) => (
+          <div className="product" key={product.id}>
             <div className="favourite-btn">
               <IoHeart
                 className="heart-icon fill"
