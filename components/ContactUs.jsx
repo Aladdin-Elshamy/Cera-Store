@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { SlLocationPin } from "react-icons/sl";
 import { FiPhoneCall } from "react-icons/fi";
 import { MdMailOutline } from "react-icons/md";
+import axios from "axios";
 import Aos from "aos";
 import "aos/dist/aos.css";
 export default function ContactUs() {
@@ -12,10 +13,18 @@ export default function ContactUs() {
     formState: { errors },
   } = useForm();
 
-  function onSubmit(data) {
-    console.log(data);
-    console.log(errors);
-  }
+  const onSubmit = async (data) => {
+    axios
+      .get("https://api.wasellb.com", data)
+      .then((response) => {
+        // Handle successful response
+        console.log("Data sent successfully", response.data);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.error("Error sending data:", error);
+      });
+  };
   React.useEffect(() => {
     Aos.init({ duration: 1500, disable: "mobile", once: true });
   }, []);
@@ -23,42 +32,51 @@ export default function ContactUs() {
     <section className="contact-us" id="contact-us">
       <div className="contact-us-form" data-aos="fade-right">
         <h2 className="contact-us-title">Contact Us</h2>
-        <form action="" onSubmit={handleSubmit(onSubmit)}>
-          <input
-            aria-label="Enter your name"
-            type="text"
-            {...register("name", { required: true, maxLength: 20 })}
-            placeholder="Name"
-          />
-          {errors.name?.type === "required" ? (
-            <span className="error-message">This field is required</span>
-          ) : (
-            errors.name?.type === "maxLength" && (
-              <span className="error-message">Max lenght is 20</span>
-            )
-          )}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="input-field">
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              {...register("name", { required: true, maxLength: 20 })}
+              placeholder="Enter Your Name"
+            />
+            {errors.name?.type === "required" ? (
+              <span className="error-message">This field is required</span>
+            ) : (
+              errors.name?.type === "maxLength" && (
+                <span className="error-message">Max lenght is 20</span>
+              )
+            )}
+          </div>
 
-          <input
-            type="email"
-            aria-label="Enter your email"
-            {...register("email", {
-              required: true,
-              pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            })}
-            placeholder="Email"
-          />
-          {errors.email && (
-            <span className="error-message">This field is required</span>
-          )}
-
-          <textarea
-            aria-label="Enter your message"
-            {...register("message", { required: true, maxLength: 500 })}
-            placeholder="Message"
-          ></textarea>
-          {errors.message && (
-            <span className="error-message">This field is required</span>
-          )}
+          <div className="input-field">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              {...register("email", {
+                required: true,
+                pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              })}
+              placeholder="Enter Your Email"
+            />
+            {errors.email && (
+              <span className="error-message">This field is required</span>
+            )}
+          </div>
+          <div className="input-field">
+            <label htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              aria-label="Enter your message"
+              {...register("message", { required: true, maxLength: 500 })}
+              placeholder="Message"
+            ></textarea>
+            {errors.message && (
+              <span className="error-message">This field is required</span>
+            )}
+          </div>
           <div className="contact-us-subscribe">
             <input
               aria-label="Subscribe"

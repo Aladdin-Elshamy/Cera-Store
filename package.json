@@ -9,14 +9,15 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.14",
     "aos": "^2.3.4",
+    "axios": "^1.6.8",
     "hamburger-react": "^2.5.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",

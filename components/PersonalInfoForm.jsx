@@ -28,6 +28,7 @@ export default function PersonalInfoForm(props) {
           <label htmlFor="name">Name</label>
           <input
             type="text"
+            id="name"
             {...register("name", { required: true, maxLength: 20 })}
             placeholder="Enter Your Name"
           />
@@ -43,6 +44,7 @@ export default function PersonalInfoForm(props) {
           <label htmlFor="email">Email</label>
           <input
             type="email"
+            id="email"
             {...register("email", {
               required: true,
               pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
