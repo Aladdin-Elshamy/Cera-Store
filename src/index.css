@@ -584,9 +584,6 @@ color: #000;
         flex-direction: row;
         gap:1em;
     }
-    form{
-        gap:1.5em
-    }
     .contact-us-form{
         width: 40%;
     }
@@ -1059,7 +1056,9 @@ input[type=number] {
     .personal-info{
         width: 40%;
     }
-    
+    .personal-info form{
+        gap:1.5em
+    }
     .order-summary{
         width: 55%;
         order: 1;
