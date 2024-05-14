@@ -3,6 +3,7 @@ import About from "../components/About";
 import Collections from "../components/Collections";
 import ContactUs from "../components/ContactUs";
 import React from "react";
+import axios from "axios";
 export default function Home() {
   const [data, setData] = React.useState({});
   const [loading, setLoading] = React.useState(true);
@@ -11,25 +12,17 @@ export default function Home() {
     window.scrollTo(0, 0);
     async function fetchData() {
       try {
-        const response = await fetch(
-          "https://fakestoreapi.com/products?limit=30",
+        const response = await axios.get(
+          "https://cera.hyperfinition.com/api/public/products",
         );
-        if (!response.ok)
+        if (response.status > 200 && response.status < 300)
           throw new Error(`Failed to fetch data: Error ${response.status}`);
-        const data = await response.json();
 
-        console.log(data);
-        const newData = data.map((product) => {
-          return {
-            ...product,
-            colors: ["red", "green", "blue"],
-            sizes: [36, 37, 38],
-          };
-        });
-        console.log(newData);
-        setData(newData);
+        console.log(response.data.data);
+        setData(response.data.data);
         setLoading(false);
       } catch (error) {
+        console.log(error);
         setError(true);
         setLoading(false);
       }

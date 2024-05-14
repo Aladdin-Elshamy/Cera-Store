@@ -12,13 +12,18 @@ export default function ContactUs() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const [successMessage, setSuccessMessage] = React.useState("");
   const onSubmit = async (data) => {
+    console.log(data);
     axios
-      .get("https://api.wasellb.com", data)
+      .post("https://cera.hyperfinition.com/users/contact_us", data)
       .then((response) => {
         // Handle successful response
         console.log("Data sent successfully", response.data);
+        setSuccessMessage("Your message has been sent successfully");
+        setTimeout(() => {
+          setSuccessMessage("");
+        }, 3000);
       })
       .catch((error) => {
         // Handle errors
@@ -66,6 +71,18 @@ export default function ContactUs() {
             )}
           </div>
           <div className="input-field">
+            <label htmlFor="phoneNumber">Phone Number</label>
+            <input
+              id="phoneNumber"
+              type="number"
+              {...register("phone", { required: true })}
+              placeholder="Enter Your Phone Number"
+            />
+            {errors.phoneNumber && (
+              <span className="error-message">This field is required</span>
+            )}
+          </div>
+          <div className="input-field">
             <label htmlFor="message">Message</label>
             <textarea
               id="message"
@@ -89,6 +106,16 @@ export default function ContactUs() {
               I would like to receive the newsletter.
             </label>
           </div>
+          <p
+            className={
+              successMessage
+                ? "contact-success-message"
+                : "contact-none-message"
+            }
+          >
+            {successMessage}
+          </p>
+
           <button type="submit">Submit</button>
         </form>
       </div>

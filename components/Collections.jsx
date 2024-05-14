@@ -73,11 +73,11 @@ export default function Collections({ data }) {
                 alt={product.title}
                 className="product-img"
               />
-              <h4 className="product-name">{product.title}</h4>
+              <h4 className="product-name">{product.name}</h4>
               <div className="product-price-colors">
                 <p className="product-price">${product.price}</p>
                 <div className="product-colors">
-                  {product.colors.map((color) => (
+                  {product.colors?.map((color) => (
                     <span
                       key={color}
                       className="color"

@@ -26,13 +26,19 @@ export default function Footer() {
             <h4 className="second-column-title">Company</h4>
             <ul>
               <li>
-                <HashLink to="/#about">About</HashLink>
+                <HashLink to="/#about" smooth>
+                  About
+                </HashLink>
               </li>
               <li>
-                <HashLink to="/#contact">Contact</HashLink>
+                <HashLink to="/#contact" smooth>
+                  Contact
+                </HashLink>
               </li>
               <li>
-                <HashLink to="/#collections">Collections</HashLink>
+                <HashLink to="/#collections" smooth>
+                  Collections
+                </HashLink>
               </li>
             </ul>
           </div>
