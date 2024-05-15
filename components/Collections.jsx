@@ -70,7 +70,7 @@ export default function Collections({ data }) {
             <div className="product-info">
               <img
                 src={product.image}
-                alt={product.title}
+                alt={product.name}
                 className="product-img"
               />
               <h4 className="product-name">{product.name}</h4>

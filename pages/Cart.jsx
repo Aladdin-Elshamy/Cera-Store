@@ -42,7 +42,7 @@ export default function Cart() {
             className="cart-product"
             key={
               savedCartProduct.id +
-              savedCartProduct.colors +
+              savedCartProduct.colors.id +
               savedCartProduct.sizes
             }
           >
@@ -55,7 +55,7 @@ export default function Cart() {
                 {savedCartProduct.description}
               </p>
               <div className="cart-product-detail">
-                <p>Color: {savedCartProduct.colors}</p>
+                <p>Color: {savedCartProduct.colors.name}</p>
                 <p>Quantity: x{savedCartProduct.quantity}</p>
                 <p>Size: {savedCartProduct.sizes}</p>
               </div>

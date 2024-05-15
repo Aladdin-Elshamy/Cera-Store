@@ -27,7 +27,7 @@ export default function Wishlist() {
     <section className="wishlist container" data-aos="zoom-in">
       <h2 className="wishlist-title">Your Wishlist</h2>
       <div className="grid-container">
-        {savedProducts.map((product, i) => (
+        {savedProducts.map((product) => (
           <div className="product" key={product.id}>
             <div className="favourite-btn">
               <IoHeart
@@ -38,19 +38,19 @@ export default function Wishlist() {
             <div className="product-info">
               <img
                 src={product.image}
-                alt={product.title}
+                alt={product.name}
                 className="product-img"
               />
-              <h4 className="product-name">{product.title}</h4>
+              <h4 className="product-name">{product.name}</h4>
               <div className="product-price-colors">
                 <p className="product-price">${product.price}</p>
                 <div className="product-colors">
-                  {product.colors.map((color) => (
+                  {product.colors?.map((color) => (
                     <span
                       key={color}
                       className="color"
                       style={{
-                        backgroundColor: color,
+                        backgroundColor: color.code,
                       }}
                     ></span>
                   ))}

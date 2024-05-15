@@ -43,16 +43,6 @@ export default function Payment() {
               />
               <label htmlFor="cash-on-delivery">Cash on delivery</label>
             </div>
-            <div className="payment-method-option">
-              <input
-                type="radio"
-                name="payment-method"
-                id="vf-cash"
-                value="vf-cash"
-                onChange={handleChange}
-              />
-              <label htmlFor="vf-cash">VF Cash</label>
-            </div>
           </div>
           <button
             className="payment-method-submit btn"
@@ -67,16 +57,16 @@ export default function Payment() {
         {cartProducts.map((product) => (
           <div className="order-summary-product" key={product.id}>
             <div className="order-summary-product-img">
-              <img src={product.image} alt={product.title} />
+              <img src={product.image} alt={product.name} />
             </div>
             <div className="order-summary-product-info">
-              <h3 className="order-summary-product-title">{product.title}</h3>
+              <h3 className="order-summary-product-title">{product.name}</h3>
               <p className="order-summary-product-description">
                 {product.description}
               </p>
               <div className="order-summary-product-detail">
                 <p className="order-summary-product-color">
-                  Color: {product.colors}
+                  Color: {product.colors.name}
                 </p>
                 <p className="order-summary-product-quantity">
                   x{product.quantity}

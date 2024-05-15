@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import axios from "axios";
 export default function PersonalInfoForm(props) {
   const {
     register,
@@ -7,22 +8,36 @@ export default function PersonalInfoForm(props) {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const { setCartProducts } = useOutletContext();
+  const { cartProducts, setCartProducts } = useOutletContext();
 
   function clearCart() {
     setCartProducts([]);
     localStorage.removeItem("cartProducts");
   }
   function onSubmit(data) {
-    clearCart();
-    navigate("/success", { replace: true });
+    data.products = [];
+    console.log(data);
+    cartProducts.forEach((product) => {
+      data.products.push({
+        product_id: product.id,
+        color_id: product.colors.id,
+        size: product.sizes,
+        quantity: product.quantity,
+      });
+    });
+    axios
+      .post("https://cera.hyperfinition.com/api/orders", data)
+      .then((response) => {
+        clearCart();
+        navigate("/success", { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   return (
     <div className="personal-info">
       <h1 className="personal-info-title">Personal Information</h1>
-      {props.paymentMethod === "vf-cash" ? (
-        <h2>Vodafone Cash:01009876654</h2>
-      ) : null}
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <div className="input-field">
           <label htmlFor="name">Name</label>
@@ -60,23 +75,21 @@ export default function PersonalInfoForm(props) {
           <input
             id="phoneNumber"
             type="number"
-            {...register("phoneNumber", { required: true })}
+            {...register("phone", { required: true })}
             placeholder="Enter Your Phone Number"
           />
-          {errors.phoneNumber && (
+          {errors.phone && (
             <span className="error-message">This field is required</span>
           )}
         </div>
         <div className="input-field">
-          <label htmlFor="countery">Countery</label>
+          <label htmlFor="country">Countery</label>
           <input
             id="countery"
             type="text"
-            value={"Egypt"}
+            value="Egypt"
             disabled
             className="disabled-input"
-            {...register("countery")}
-            placeholder="Enter Your Countery"
           />
         </div>
         <div className="input-field">

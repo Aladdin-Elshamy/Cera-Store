@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, useOutletContext, useNavigate } from "react-router-dom";
+import axios from "axios";
 import Aos from "aos";
 import "aos/dist/aos.css";
 export default function Product() {
@@ -15,22 +16,13 @@ export default function Product() {
   React.useEffect(() => {
     Aos.init({ duration: 1500, disable: "mobile", once: true });
     window.scrollTo(0, 0);
-    fetch(`https://fakestoreapi.com/products/${productID}`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return res.json();
-      })
+    axios
+      .get(`https://cera.hyperfinition.com/api/public/products/${productID}`)
       .then((data) => {
-        const newData = {
-          ...data,
-          colors: ["red", "green", "blue"],
-          sizes: [36, 37, 38],
-        };
-        console.log(newData);
-        setProduct(newData);
-        setSpecificProduct(newData);
+        console.log(data.data.data);
+        setProduct(data.data.data);
+        setSpecificProduct(data.data.data);
+        console.log(specificProduct);
       })
       .catch((error) => {
         navigate("/404");
@@ -79,10 +71,10 @@ export default function Product() {
   return (
     <section className="product-page container">
       <div className="product-img" data-aos="fade-right">
-        <img src={product.image} alt={product.title} />
+        <img src={product.image} alt={product.name} />
       </div>
       <div className="product-info" data-aos="fade-left">
-        <h1 className="product-title">{product.title}</h1>
+        <h1 className="product-title">{product.name}</h1>
         <p className="product-description">{product.description}</p>
         <p className="product-price">${product.price}</p>
         <p className="product-color">Select Color</p>
@@ -94,7 +86,7 @@ export default function Product() {
                 productDetail.color === color ? "color selected-color" : "color"
               }
               style={{
-                backgroundColor: color,
+                backgroundColor: color.code,
               }}
               onClick={() => setProductColor(color)}
             ></span>

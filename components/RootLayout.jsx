@@ -34,7 +34,7 @@ export default function RootLayout() {
     const foundSpecificElement = cartProducts.find(
       (cartProducts) =>
         cartProducts.id === product.id &&
-        cartProducts.colors === product.colors &&
+        cartProducts.colors.id === product.colors.id &&
         cartProducts.sizes === product.sizes,
     );
     console.log(product);

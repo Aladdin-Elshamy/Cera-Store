@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
 import { HashLink } from "react-router-hash-link";
 import React from "react";
