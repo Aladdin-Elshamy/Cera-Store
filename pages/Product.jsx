@@ -81,9 +81,11 @@ export default function Product() {
         <div className="product-colors">
           {product.colors?.map((color) => (
             <span
-              key={color}
+              key={color.name}
               className={
-                productDetail.color === color ? "color selected-color" : "color"
+                productDetail.color.code === color.code
+                  ? "color selected-color"
+                  : "color"
               }
               style={{
                 backgroundColor: color.code,

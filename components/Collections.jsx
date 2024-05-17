@@ -79,10 +79,10 @@ export default function Collections({ data }) {
                 <div className="product-colors">
                   {product.colors?.map((color) => (
                     <span
-                      key={color}
+                      key={color.name}
                       className="color"
                       style={{
-                        backgroundColor: color,
+                        backgroundColor: color.code,
                       }}
                     ></span>
                   ))}

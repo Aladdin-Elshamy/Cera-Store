@@ -50,13 +50,13 @@ export default function RootLayout() {
         const newCartProducts = cartProducts.map((cartProduct) => {
           if (
             cartProduct.id === product.id &&
-            cartProduct.colors === product.colors &&
+            cartProduct.colors.id === product.colors.id &&
             cartProduct.sizes === product.sizes
           ) {
             return {
               ...cartProduct,
-              quantity: product.quantity,
-              price: product.price * product.quantity,
+              quantity: quantity,
+              price: product.price * quantity,
             };
           }
           return cartProduct;
