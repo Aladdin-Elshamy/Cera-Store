@@ -287,6 +287,7 @@ header{
     .hero-img img{
         height: 320px;
         max-width: 390px;
+        object-fit: contain;
     }
 }
 /* About */
@@ -702,8 +703,6 @@ footer ul{
 .not-found{
     margin-top: -4em;
     display: flex;
-    text-align: center;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
