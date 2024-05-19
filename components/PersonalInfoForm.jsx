@@ -66,20 +66,35 @@ export default function PersonalInfoForm(props) {
             })}
             placeholder="Enter Your Email"
           />
-          {errors.email && (
+          {errors.email?.type === "required" ? (
             <span className="error-message">This field is required</span>
+          ) : (
+            errors.email?.type === "pattern" && (
+              <span className="error-message">Enter a valid email</span>
+            )
           )}
         </div>
         <div className="input-field">
           <label htmlFor="phoneNumber">Phone Number</label>
           <input
             id="phoneNumber"
-            type="number"
-            {...register("phone", { required: true })}
+            type="text"
+            {...register("phone", {
+              required: true,
+              minLength: 11,
+              maxLength: 11,
+              pattern: /^[0-9]+$/,
+            })}
             placeholder="Enter Your Phone Number"
           />
-          {errors.phone && (
+          {errors.phone?.type === "required" ? (
             <span className="error-message">This field is required</span>
+          ) : (
+            (errors.phone?.type === "maxLength" ||
+              errors.phone?.type === "minLength" ||
+              errors.phone?.type === "pattern") && (
+              <span className="error-message">Enter a valid phone number</span>
+            )
           )}
         </div>
         <div className="input-field">

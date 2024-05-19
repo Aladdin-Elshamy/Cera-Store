@@ -1023,7 +1023,7 @@ footer ul{
 }
 /* Remove arrows from input type number */
 /* Chrome, Safari, Edge, Opera */
-.personal-info input::-webkit-outer-spin-button,
+/* .personal-info input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
     appearance: none;
     margin: 0;
@@ -1031,7 +1031,7 @@ input::-webkit-inner-spin-button{
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
-}
+} */
 .personal-info .disabled-input{
     background-color: #fff;
     color:#000;
