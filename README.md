@@ -2,7 +2,7 @@
 
 Welcome to **Cera-Store**, a sophisticated online platform dedicated to providing a wide range of high-quality bags and shoes. This README will guide you through the features, installation process, and how to contribute to the project.
 
-[screencapture-aladdin-elshamy-github-io-Cera-Store-2024-05-19-19_03_25.pdf](https://github.com/Aladdin-Elshamy/Cera-Store/files/15369991/screencapture-aladdin-elshamy-github-io-Cera-Store-2024-05-19-19_03_25.pdf)
+![screencapture-aladdin-elshamy-github-io-Cera-Store-2024-05-19-19_07_08](https://github.com/Aladdin-Elshamy/Cera-Store/assets/122921299/c56c3807-c6be-4a90-9d90-870f7421bfba)
 
 ## Table of Contents
 
