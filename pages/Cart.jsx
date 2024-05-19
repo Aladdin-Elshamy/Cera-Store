@@ -47,10 +47,10 @@ export default function Cart() {
             }
           >
             <div className="cart-product-img">
-              <img src={savedCartProduct.image} alt={savedCartProduct.title} />
+              <img src={savedCartProduct.image} alt={savedCartProduct.name} />
             </div>
             <div className="cart-product-info">
-              <h2 className="cart-product-title">{savedCartProduct.title}</h2>
+              <h2 className="cart-product-title">{savedCartProduct.name}</h2>
               <p className="cart-product-description">
                 {savedCartProduct.description}
               </p>
