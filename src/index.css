@@ -611,7 +611,8 @@ footer{
     color:#E7E7E3;
     margin-top: auto;
     flex-shrink: 0;
-    background-position: -5% ;
+    background-position: center;
+
 }
 footer .container{
     display: flex;
@@ -667,7 +668,7 @@ footer ul{
 ,.second-row .second-row-text
 ,.first-column-text
 ,.third-column ul a{
-    text-shadow: 0 0 1px #E7E7E3;
+    text-shadow: 0 0 1px #fff;
 }
 .second-column ul a:hover, .third-column ul a:hover{
     color:var(--main-color);
