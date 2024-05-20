@@ -444,7 +444,7 @@ header{
     display: flex;
     flex-direction: column;
     gap:1em;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .product{
     min-width: 200px;
@@ -764,7 +764,7 @@ footer ul{
     gap:1em;
 }
 .product-page .color{
-    width: 1rem;
+    flex-basis: 1rem;
     height: 1rem;
     cursor: pointer;
     padding: 1em 2em;
