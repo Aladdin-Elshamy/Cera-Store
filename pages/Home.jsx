@@ -18,11 +18,9 @@ export default function Home() {
         if (response.status > 200 && response.status < 300)
           throw new Error(`Failed to fetch data: Error ${response.status}`);
 
-        console.log(response.data.data);
         setData(response.data.data);
         setLoading(false);
       } catch (error) {
-        console.log(error);
         setError(true);
         setLoading(false);
       }

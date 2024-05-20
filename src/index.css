@@ -67,7 +67,7 @@ p.error-message{
     color:#fff;
 }
 .decrease-btn:disabled,.btn:disabled{
-    cursor: not-allowed;
+    cursor: not-allowed !important;
     opacity: 0.5;
     transition: none;
 }
@@ -77,7 +77,7 @@ p.error-message{
         box-shadow: 0px 10px 15px 0px #E10F1540;
         text-shadow: 0px 0px 1px #fff;
     }
-    .btn:active{
+    .btn:active:enabled{
         transform: scale(0.98) !important ;
         box-shadow: none;
     }
@@ -764,10 +764,10 @@ footer ul{
     gap:1em;
 }
 .product-page .color{
-    flex-basis: 1rem;
-    height: 1rem;
+    flex-basis: 4rem;
+    height: 2.3rem;
     cursor: pointer;
-    padding: 1em 2em;
+    /* padding: 1em 0.5em; */
     border-radius: 0.2em;
     border: 4px solid var(--non-select-color);
 }
@@ -783,6 +783,7 @@ footer ul{
 .selected-color{
     border: 3px solid var(--non-select-color) !important;
     outline: 3px solid var(--select-color) !important;
+    flex-basis: 3.8rem !important;
 }
 .product-quantity{
     border: 2px solid var(--non-select-color);

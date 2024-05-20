@@ -37,8 +37,6 @@ export default function RootLayout() {
         cartProducts.colors.id === product.colors.id &&
         cartProducts.sizes === product.sizes,
     );
-    console.log(product);
-    console.log(foundElement);
     if (!foundElement) {
       product.quantity = quantity;
       product.price = product.price * product.quantity;

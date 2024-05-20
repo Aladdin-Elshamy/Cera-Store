@@ -19,10 +19,8 @@ export default function Product() {
     axios
       .get(`https://cera.hyperfinition.com/api/public/products/${productID}`)
       .then((data) => {
-        console.log(data.data.data);
         setProduct(data.data.data);
         setSpecificProduct(data.data.data);
-        console.log(specificProduct);
       })
       .catch((error) => {
         navigate("/404");
@@ -42,7 +40,6 @@ export default function Product() {
       ...specificProduct,
       colors: color,
     };
-    console.log(newProduct);
     setSpecificProduct(newProduct);
   }
   function setProductSize(size) {
@@ -54,7 +51,6 @@ export default function Product() {
       ...specificProduct,
       sizes: size,
     };
-    console.log(newProduct);
     setSpecificProduct(newProduct);
   }
   function increaseWantedQuantity() {
