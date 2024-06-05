@@ -19,7 +19,6 @@ export default function Home() {
           throw new Error(`Failed to fetch data: Error ${response.status}`);
         const data = await response.json();
 
-        console.log(data);
         const newData = data.map((product) => {
           return {
             ...product,
@@ -27,7 +26,6 @@ export default function Home() {
             sizes: [36, 37, 38],
           };
         });
-        console.log(newData);
         setData(newData);
         setLoading(false);
       } catch (error) {
