@@ -41,21 +41,22 @@ export default function Cart() {
           <div
             className="cart-product"
             key={
+              savedCartProduct.title +
               savedCartProduct.id +
-              savedCartProduct.colors.id +
+              savedCartProduct.colors +
               savedCartProduct.sizes
             }
           >
             <div className="cart-product-img">
-              <img src={savedCartProduct.image} alt={savedCartProduct.name} />
+              <img src={savedCartProduct.image} alt={savedCartProduct.title} />
             </div>
             <div className="cart-product-info">
-              <h2 className="cart-product-title">{savedCartProduct.name}</h2>
+              <h2 className="cart-product-title">{savedCartProduct.title}</h2>
               <p className="cart-product-description">
                 {savedCartProduct.description}
               </p>
               <div className="cart-product-detail">
-                <p>Color: {savedCartProduct.colors.name}</p>
+                <p>Color: {savedCartProduct.colors}</p>
                 <p>Quantity: x{savedCartProduct.quantity}</p>
                 <p>Size: {savedCartProduct.sizes}</p>
               </div>

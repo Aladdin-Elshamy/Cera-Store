@@ -1,15 +1,16 @@
 import { useForm } from "react-hook-form";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import axios from "axios";
+import React from "react";
 export default function PersonalInfoForm(props) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const { cartProducts, setCartProducts } = useOutletContext();
-
+  const { setCartProducts } = useOutletContext();
+  const [faildMessage, setFaildMessage] = React.useState("");
   function clearCart() {
     setCartProducts([]);
     localStorage.removeItem("cartProducts");
@@ -17,23 +18,16 @@ export default function PersonalInfoForm(props) {
   function onSubmit(data) {
     data.products = [];
     console.log(data);
-    cartProducts.forEach((product) => {
-      data.products.push({
-        product_id: product.id,
-        color_id: product.colors.id,
-        size: product.sizes,
-        quantity: product.quantity,
-      });
-    });
-    axios
-      .post("https://cera.hyperfinition.com/api/orders", data)
-      .then((response) => {
-        clearCart();
-        navigate("/success", { replace: true });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      clearCart();
+      reset();
+      navigate("/success", { replace: true });
+    } catch (error) {
+      setFaildMessage(`Error sending data: ${error}`);
+      setTimeout(() => {
+        setFaildMessage("");
+      }, 3000);
+    }
   }
   return (
     <div className="personal-info">
@@ -119,6 +113,9 @@ export default function PersonalInfoForm(props) {
             <span className="error-message">This field is required</span>
           )}
         </div>
+        {faildMessage && (
+          <p style={{ fontWeight: 600, color: "#e10f15" }}>{faildMessage}</p>
+        )}
         <button type="submit" className="btn">
           Checkout
         </button>

@@ -16,11 +16,22 @@ export default function Product() {
   React.useEffect(() => {
     Aos.init({ duration: 1500, disable: "mobile", once: true });
     window.scrollTo(0, 0);
-    axios
-      .get(`https://cera.hyperfinition.com/api/public/products/${productID}`)
+    fetch(`https://fakestoreapi.com/products/${productID}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
       .then((data) => {
-        setProduct(data.data.data);
-        setSpecificProduct(data.data.data);
+        const newData = {
+          ...data,
+          colors: ["red", "green", "blue"],
+          sizes: [36, 37, 38],
+        };
+        console.log(newData);
+        setProduct(newData);
+        setSpecificProduct(newData);
       })
       .catch((error) => {
         navigate("/404");
@@ -77,14 +88,12 @@ export default function Product() {
         <div className="product-colors">
           {product.colors?.map((color) => (
             <span
-              key={color.name}
+              key={color}
               className={
-                productDetail.color.code === color.code
-                  ? "color selected-color"
-                  : "color"
+                productDetail.color === color ? "color selected-color" : "color"
               }
               style={{
-                backgroundColor: color.code,
+                backgroundColor: color,
               }}
               onClick={() => setProductColor(color)}
             ></span>

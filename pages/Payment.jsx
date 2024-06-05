@@ -15,6 +15,7 @@ export default function Payment() {
     sessionStorage.setItem("paymentMethod", event.target.value);
   }
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     Aos.init({ duration: 1500, disable: "mobile", once: true });
     const paymentMethod = sessionStorage.getItem("paymentMethod");
     if (paymentMethod) {
@@ -55,18 +56,21 @@ export default function Payment() {
       <div className="order-summary">
         <h1 className="order-summary-title">Order Summary</h1>
         {cartProducts.map((product) => (
-          <div className="order-summary-product" key={product.id}>
+          <div
+            className="order-summary-product"
+            key={product.title + product.id + product.colors + product.sizes}
+          >
             <div className="order-summary-product-img">
-              <img src={product.image} alt={product.name} />
+              <img src={product.image} alt={product.title} />
             </div>
             <div className="order-summary-product-info">
-              <h3 className="order-summary-product-title">{product.name}</h3>
+              <h3 className="order-summary-product-title">{product.title}</h3>
               <p className="order-summary-product-description">
                 {product.description}
               </p>
               <div className="order-summary-product-detail">
                 <p className="order-summary-product-color">
-                  Color: {product.colors.name}
+                  Color: {product.colors}
                 </p>
                 <p className="order-summary-product-quantity">
                   x{product.quantity}

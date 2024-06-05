@@ -3,32 +3,26 @@ import { useForm } from "react-hook-form";
 import { SlLocationPin } from "react-icons/sl";
 import { FiPhoneCall } from "react-icons/fi";
 import { MdMailOutline } from "react-icons/md";
-import axios from "axios";
 import Aos from "aos";
 import "aos/dist/aos.css";
 export default function ContactUs() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const [successMessage, setSuccessMessage] = React.useState("");
-  const onSubmit = async (data) => {
-    console.log(data);
-    axios
-      .post("https://cera.hyperfinition.com/users/contact_us", data)
-      .then((response) => {
-        // Handle successful response
-        console.log("Data sent successfully", response.data);
-        setSuccessMessage("Your message has been sent successfully");
-        setTimeout(() => {
-          setSuccessMessage("");
-        }, 3000);
-      })
-      .catch((error) => {
-        // Handle errors
-        console.error("Error sending data:", error);
-      });
+  const onSubmit = () => {
+    try {
+      setSuccessMessage("Your message has been sent successfully");
+      reset();
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error("Error sending data:", error);
+    }
   };
   React.useEffect(() => {
     Aos.init({ duration: 1500, disable: "mobile", once: true });
@@ -74,12 +68,25 @@ export default function ContactUs() {
             <label htmlFor="phoneNumber">Phone Number</label>
             <input
               id="phoneNumber"
-              type="number"
-              {...register("phone", { required: true })}
+              type="text"
+              {...register("phone", {
+                required: true,
+                minLength: 11,
+                maxLength: 11,
+                pattern: /^[0-9]+$/,
+              })}
               placeholder="Enter Your Phone Number"
             />
-            {errors.phoneNumber && (
+            {errors.phone?.type === "required" ? (
               <span className="error-message">This field is required</span>
+            ) : (
+              (errors.phone?.type === "maxLength" ||
+                errors.phone?.type === "minLength" ||
+                errors.phone?.type === "pattern") && (
+                <span className="error-message">
+                  Enter a valid phone number
+                </span>
+              )
             )}
           </div>
           <div className="input-field">

@@ -12,13 +12,23 @@ export default function Home() {
     window.scrollTo(0, 0);
     async function fetchData() {
       try {
-        const response = await axios.get(
-          "https://cera.hyperfinition.com/api/public/products",
+        const response = await fetch(
+          "https://fakestoreapi.com/products?limit=30",
         );
-        if (response.status > 200 && response.status < 300)
+        if (!response.ok)
           throw new Error(`Failed to fetch data: Error ${response.status}`);
+        const data = await response.json();
 
-        setData(response.data.data);
+        console.log(data);
+        const newData = data.map((product) => {
+          return {
+            ...product,
+            colors: ["red", "green", "blue"],
+            sizes: [36, 37, 38],
+          };
+        });
+        console.log(newData);
+        setData(newData);
         setLoading(false);
       } catch (error) {
         setError(true);

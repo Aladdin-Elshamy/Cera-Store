@@ -70,19 +70,19 @@ export default function Collections({ data }) {
             <div className="product-info">
               <img
                 src={product.image}
-                alt={product.name}
+                alt={product.title}
                 className="product-img"
               />
-              <h4 className="product-name">{product.name}</h4>
+              <h4 className="product-name">{product.title}</h4>
               <div className="product-price-colors">
                 <p className="product-price">${product.price}</p>
                 <div className="product-colors">
                   {product.colors?.map((color) => (
                     <span
-                      key={color.name}
+                      key={color}
                       className="color"
                       style={{
-                        backgroundColor: color.code,
+                        backgroundColor: color,
                       }}
                     ></span>
                   ))}
