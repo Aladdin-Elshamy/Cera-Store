@@ -8,11 +8,11 @@ Welcome to **Cera-Store**, a sophisticated online platform dedicated to providin
 
 - [Features](#features)
 - [Installation](#installation)
+- [Live Demo](#live-demo)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
-- [Live Demo](#live-demo)
 
 ## Features
 
@@ -39,6 +39,10 @@ To set up the Cera-Store website locally, follow these steps:
     ```
 3. **Open the Index File**:
     Open `index.html` in your preferred web browser to view the website locally.
+
+## Live Demo
+
+Check out the live version of Cera-Store [here](https://aladdin-elshamy.github.io/Cera-Store/).
 
 ## Usage
 
@@ -83,9 +87,5 @@ For any questions, suggestions, or issues, please contact:
 
 - **Aladdin Elshamy**: [GitHub Profile](https://github.com/aladdin-elshamy)
 - **Project Repository**: [Cera-Store on GitHub](https://github.com/aladdin-elshamy/Cera-Store)
-
-## Live Demo
-
-Check out the live version of Cera-Store [here](https://aladdin-elshamy.github.io/Cera-Store/).
 
 Thank you for visiting Cera Store! Enjoy your shopping experience.
