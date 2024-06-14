@@ -882,7 +882,8 @@ footer ul{
     display: flex;
     flex-direction: column;
     gap:1em;
-    color:var(--text-color)
+    color:var(--text-color);
+    width: 100%;
 }
 .cart-product-info h2{
     color:#000;
