@@ -11,7 +11,6 @@ export default function AuthRequired() {
   const isSessioned = sessionStorage.getItem("sessionLogin");
   const location = useLocation();
   const context = useOutletContext();
-  console.log(context);
   if (!isLoggedIn && !isSessioned) {
     return (
       <Navigate

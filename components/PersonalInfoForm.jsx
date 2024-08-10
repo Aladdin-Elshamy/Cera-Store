@@ -17,7 +17,6 @@ export default function PersonalInfoForm(props) {
   }
   function onSubmit(data) {
     data.products = [];
-    console.log(data);
     try {
       clearCart();
       reset();

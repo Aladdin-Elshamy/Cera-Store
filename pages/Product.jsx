@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams, useOutletContext, useNavigate } from "react-router-dom";
-import axios from "axios";
 import Aos from "aos";
 import "aos/dist/aos.css";
 export default function Product() {
@@ -12,7 +11,6 @@ export default function Product() {
     size: "",
   });
   const navigate = useNavigate();
-  console.log(productID);
   React.useEffect(() => {
     Aos.init({ duration: 1500, disable: "mobile", once: true });
     window.scrollTo(0, 0);
@@ -29,7 +27,6 @@ export default function Product() {
           colors: ["red", "green", "blue"],
           sizes: [36, 37, 38],
         };
-        console.log(newData);
         setProduct(newData);
         setSpecificProduct(newData);
       })

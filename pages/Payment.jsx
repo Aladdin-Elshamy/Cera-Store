@@ -79,7 +79,9 @@ export default function Payment() {
                   Size: {product.sizes}
                 </p>
               </div>
-              <p className="order-summary-product-price">${product.price}</p>
+              <p className="order-summary-product-price">
+                ${product.price.toFixed(2)}
+              </p>
             </div>
             <hr />
           </div>

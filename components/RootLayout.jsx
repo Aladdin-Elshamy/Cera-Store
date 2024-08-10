@@ -10,7 +10,6 @@ export default function RootLayout() {
     const foundElement = savedProducts.find(
       (savedProduct) => savedProduct.id === product.id,
     );
-    console.log(foundElement);
     if (!foundElement) {
       const newSavedProducts = [...savedProducts, product];
       localStorage.setItem("savedProducts", JSON.stringify(newSavedProducts));
@@ -34,7 +33,7 @@ export default function RootLayout() {
     const foundSpecificElement = cartProducts.find(
       (cartProducts) =>
         cartProducts.id === product.id &&
-        cartProducts.colors.id === product.colors.id &&
+        cartProducts.colors === product.colors &&
         cartProducts.sizes === product.sizes,
     );
     if (!foundElement) {
@@ -48,7 +47,7 @@ export default function RootLayout() {
         const newCartProducts = cartProducts.map((cartProduct) => {
           if (
             cartProduct.id === product.id &&
-            cartProduct.colors.id === product.colors.id &&
+            cartProduct.colors === product.colors &&
             cartProduct.sizes === product.sizes
           ) {
             return {

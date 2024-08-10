@@ -27,7 +27,7 @@ export default function Wishlist() {
     <section className="wishlist container" data-aos="zoom-in">
       <h2 className="wishlist-title">Your Wishlist</h2>
       <div className="grid-container">
-        {savedProducts.map((product, i) => (
+        {savedProducts.map((product) => (
           <div className="product" key={product.id}>
             <div className="favourite-btn">
               <IoHeart
