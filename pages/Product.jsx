@@ -75,10 +75,10 @@ export default function Product() {
   return (
     <section className="product-page container">
       <div className="product-img" data-aos="fade-right">
-        <img src={product.image} alt={product.name} />
+        <img src={product.image} alt={product.title} />
       </div>
       <div className="product-info" data-aos="fade-left">
-        <h1 className="product-title">{product.name}</h1>
+        <h1 className="product-title">{product.title}</h1>
         <p className="product-description">{product.description}</p>
         <p className="product-price">${product.price}</p>
         <p className="product-color">Select Color</p>
