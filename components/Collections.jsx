@@ -40,9 +40,6 @@ export default function Collections({ data }) {
       end: lastPost,
     });
   }
-  function handlePageChange(event, page) {
-    displaySetOfProducts(event, page);
-  }
   return (
     <section
       id="collections"
@@ -102,7 +99,6 @@ export default function Collections({ data }) {
         <Pagination
           count={pagesNum}
           onChange={(e, p) => displaySetOfProducts(e, p)}
-          onPageChange={(e, p) => handlePageChange(e, p)}
         />
       </div>
     </section>
