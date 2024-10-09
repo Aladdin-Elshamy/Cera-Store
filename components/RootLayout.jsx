@@ -26,7 +26,6 @@ export default function RootLayout() {
   }
 
   function storeCartProducts(product, quantity) {
-    product.quantity += quantity;
     const foundElement = cartProducts.find(
       (cartProducts) => cartProducts.id === product.id,
     );
@@ -44,6 +43,7 @@ export default function RootLayout() {
       setCartProducts(newCartProducts);
     } else {
       if (foundSpecificElement) {
+        product.quantity += quantity;
         const newCartProducts = cartProducts.map((cartProduct) => {
           if (
             cartProduct.id === product.id &&
@@ -61,6 +61,7 @@ export default function RootLayout() {
         localStorage.setItem("cartProducts", JSON.stringify(newCartProducts));
         setCartProducts(newCartProducts);
       } else if (foundElement) {
+        product.quantity = quantity;
         const newCartProducts = [...cartProducts, product];
         localStorage.setItem("cartProducts", JSON.stringify(newCartProducts));
         setCartProducts(newCartProducts);
