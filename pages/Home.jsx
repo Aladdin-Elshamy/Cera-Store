@@ -3,7 +3,6 @@ import About from "../components/About";
 import Collections from "../components/Collections";
 import ContactUs from "../components/ContactUs";
 import React from "react";
-import axios from "axios";
 export default function Home() {
   const [data, setData] = React.useState({});
   const [loading, setLoading] = React.useState(true);

@@ -26,7 +26,7 @@ export default function RootLayout() {
   }
 
   function storeCartProducts(product, quantity) {
-    product.quantity = quantity;
+    product.quantity += quantity;
     const foundElement = cartProducts.find(
       (cartProducts) => cartProducts.id === product.id,
     );
@@ -52,8 +52,8 @@ export default function RootLayout() {
           ) {
             return {
               ...cartProduct,
-              quantity: quantity,
-              price: product.price * quantity,
+              quantity: product.quantity,
+              price: product.price * product.quantity,
             };
           }
           return cartProduct;
