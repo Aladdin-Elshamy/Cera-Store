@@ -68,10 +68,6 @@ export default function Product() {
   function decreaseWantedQuantity() {
     setWantedQuantity((prevWantedQuantity) => prevWantedQuantity - 1);
   }
-  function addToCart(specificProduct, productWantedQuantity) {
-    storeCartProducts(specificProduct, productWantedQuantity);
-    navigate("/payment");
-  }
   return (
     <section className="product-page container">
       <div className="product-img" data-aos="fade-right">
@@ -143,7 +139,10 @@ export default function Product() {
         </button>
         <button
           className="buy-it-now btn"
-          onClick={() => addToCart(specificProduct, productWantedQuantity)}
+          onClick={() => {
+            storeCartProducts(specificProduct, productWantedQuantity);
+            navigate("/payment");
+          }}
           disabled={
             productDetail.color && productDetail.size && productWantedQuantity
               ? false
