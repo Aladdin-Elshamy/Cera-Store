@@ -33,7 +33,7 @@ export default function Product() {
       .catch((error) => {
         navigate("/404");
       });
-  }, [productID]);
+  }, [navigate, productID]);
 
   const { storeCartProducts } = useOutletContext();
 
