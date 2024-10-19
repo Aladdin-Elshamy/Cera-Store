@@ -80,7 +80,7 @@ export default function Payment() {
                 </p>
               </div>
               <p className="order-summary-product-price">
-                ${product.price.toFixed(2)}
+                ${product.price?.toFixed(2)}
               </p>
             </div>
             <hr />

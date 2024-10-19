@@ -62,7 +62,7 @@ export default function Cart() {
               </div>
               <div className="card-product-price-delete">
                 <p className="cart-product-price">
-                  ${savedCartProduct.price.toFixed(2)}
+                  ${savedCartProduct.price?.toFixed(2)}
                 </p>
                 <button onClick={() => deleteProduct(savedCartProduct)}>
                   <MdDelete />

@@ -43,7 +43,7 @@ export default function RootLayout() {
       setCartProducts(newCartProducts);
     } else {
       if (foundSpecificElement) {
-        product.quantity += quantity;
+        product.quantity = quantity + foundSpecificElement.quantity;
         const newCartProducts = cartProducts.map((cartProduct) => {
           if (
             cartProduct.id === product.id &&
